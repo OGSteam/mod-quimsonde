@@ -8,10 +8,10 @@ Affiche la liste des espionnages, en version "public"
  * @author Sylar
  * @link http://ogsteam.fr
  * @version : 1.5.1
- * dernière modification : 11.08.08
+ * derniÃ¨re modification : 11.08.08
 
  */
-// On récupére les données
+// On rÃ©cupÃ©re les donnÃ©es
 // L'appel direct est interdit
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
 global $user_data;

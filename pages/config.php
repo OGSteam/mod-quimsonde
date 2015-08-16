@@ -2,13 +2,13 @@
 /**
  * admin.php 
 
-Page de configuration, réservé aux Admins
+Page de configuration, rÃ©servÃ© aux Admins
 
  * @package QuiMSonde
  * @author Sylar
  * @link http://ogsteam.fr
  * @version : 1.5.1
- * dernière modification : 11.08.08
+ * derniÃ¨re modification : 11.08.08
 
  */
 // L'appel direct est interdit

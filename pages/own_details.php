@@ -8,7 +8,7 @@ Page Accueil
  * @author Sylar
  * @link http://ogsteam.fr
  * @version : 1.5.1
- * dernière modification : 11.08.08
+ * derniÃ¨re modification : 11.08.08
 
  */
 // L'appel direct est interdit
@@ -20,7 +20,7 @@ global $user_data,$bbcode_global;
 // Vision global ?
 if(!isset($pub_viewall)) $pub_viewall = 0;
 
-// On récupére les dates enregistrées
+// On rÃ©cupÃ©re les dates enregistrÃ©es
 $date_end = get_qms_config('time_end',$user_data['user_id']);
 $date_start = get_qms_config('time_start',$user_data['user_id']);
 
@@ -32,7 +32,7 @@ if($date_start<1) $date_start = $date_end-3600*24*30;
 if((time()-$date_end)<(3600*36)) $date_end = time();
 
 
-// Si l'utilisateur les a modifiée
+// Si l'utilisateur les a modifiÃ©e
 if(isset($pub_user_time_end)&&preg_match_all($lang['qms_format_date_regex'],$pub_user_time_end,$date)) 
 	$date_end = mktime(0,0,0,intval($date[2][0]),intval($date[1][0]),intval($date[3][0]));
 if(isset($pub_user_time_start)&&preg_match_all($lang['qms_format_date_regex'],$pub_user_time_start,$date)) 
@@ -46,16 +46,16 @@ if($date_start > $date_end){
 	$date_end = $temp;
 }
 
-// Sauvegarde des dates définitives
+// Sauvegarde des dates dÃ©finitives
 set_qms_config($date_start,'time_start',$user_data['user_id']);
 set_qms_config($date_end,'time_end',$user_data['user_id']);
 $pub_user_time_end = date("d/m/Y",$date_end);
 $pub_user_time_start = date("d/m/Y",$date_start);
 if (isset($retour))	echo"<blink>$retour</blink>";
 
-// Début du cadre
+// DÃ©but du cadre
 echo"<fieldset>\n<legend><b><font color='#80FFFF'>".($pub_viewall==0?$lang['qms_menu_mes_details']:$lang['qms_menu_hall_of_fame']);
-echo help($pub_viewall==0?'qms_mes détails':'qms_hall of fame')."</font></b></legend>\n";
+echo help($pub_viewall==0?'qms_mes dÃ©tails':'qms_hall of fame')."</font></b></legend>\n";
 // Dessin du formulaire de choix de l'intervalle
 echo"<form action='index.php?action=$mod_name&page=$pub_page' method='post'>";
 echo $lang['qms_details_intervalle'];
@@ -76,7 +76,7 @@ echo make_liste_string('cible',$pub_user_filtre_by,isset($pub_viewall)?'0':'1');
 echo"</select>\n";
 echo"</form>";//*/
 echo"<br/>\n";
-// On récupére la liste complète des espionnations du joueurs
+// On rÃ©cupÃ©re la liste complÃ¨te des espionnations du joueurs
 $table_spy=get_spies($pub_viewall==0?$user_data['user_id']:0,"`datadate`> '$date_start' AND `datadate` < '$date_end'");
 
 if($table_spy!=false){
@@ -138,12 +138,12 @@ if($table_spy!=false){
 	foreach($table_distance2['data'] as $key => $distance)
 		$table_distance2['data'][$key] = $distance." (".get_clear_distance($distance).")";
 
-	// Calcul des variables des statistiques générales
+	// Calcul des variables des statistiques gÃ©nÃ©rales
 	$pourcent_moyen = get_pourcentage_moyen($table_spy);
 	$distance_moyen = get_distance_moyen($table_spy);
 	$time_analyse = get_time_analyse($table_spy);
 
-	// Definition des statistiques générale
+	// Definition des statistiques gÃ©nÃ©rale
 	$table_statistique = Array (
 	Array (	
 	'labelG' => $lang['qms_details_most_curious_player'], 
@@ -277,7 +277,7 @@ echo"<!-- fin page ".$pub_page.".php -->\n";
 echo"</fieldset>";
 
 //-------------------------------------------------------------------------------------------------------------------
-// Renvoi un tableau composé de la liste $colonne et du count de chacune des lignes
+// Renvoi un tableau composÃ© de la liste $colonne et du count de chacune des lignes
 function get_spy_statistique_of_type($table,$type,$limite = 0,$sort_by='count',$sort_ord='desc'){
 	global $day_array;
 	$spy_type_list = get_spy_type_liste($table,$type);
@@ -400,7 +400,7 @@ function draw_textbox_for_bbcode($id,$titre,$bbcode){
 	return $link;
 }
 
-// Création du BBCode pour les statistiques 
+// CrÃ©ation du BBCode pour les statistiques 
 function remove_html($text){
 	return ereg_replace("<[^>]*>","",$text);
 }
@@ -427,7 +427,7 @@ function get_bbcode_statistique($tab,$pub_viewall){
 	$bbcode_global .= "\n\n".$bbcode;
 	return $bbcode;
 }
-// Création du BBCode pour les TOP5
+// CrÃ©ation du BBCode pour les TOP5
 function get_bbcode_top5($tab,$add_to_data,$pub_viewall){
 	global $user_data, $bbcode_global,$lang;
 	if($pub_viewall==0)
@@ -448,7 +448,7 @@ function get_bbcode_top5($tab,$add_to_data,$pub_viewall){
 function draw_tooltip_for_bbcode_global($id_list,$titre_list){
 	global $bbcode_global,$mod_name,$pub_page,$user_data,$lang;
 	global $pub_bb_valid,$pub_bb_list,$pub_bb_color1,$pub_bb_color2,$pub_bb_color3,$pub_bb_color4;
-	// Changement de réglages pour le BBCode ?
+	// Changement de rÃ©glages pour le BBCode ?
 	if(isset($pub_bb_valid)){ 
 		$out = "";
 		foreach($id_list as $key => $id){
@@ -499,7 +499,7 @@ function draw_tooltip_for_bbcode_global($id_list,$titre_list){
 	else $checked = "";
 	$code .= "<input type=\"checkbox\" id=\"bb_list\" name=\"bb_list\" value=\"Liste\" onchange=\"update_bbcode()\"$checked><br/>";
 	$code .= $lang['qms_details_show_apercu'];
-	$code .= "<input type=\"checkbox\" id=\"bb_html\" name=\"bb_html\" value=\"Aperçu\" onchange=\"update_html()\"><br/>";
+	$code .= "<input type=\"checkbox\" id=\"bb_html\" name=\"bb_html\" value=\"AperÃ§u\" onchange=\"update_html()\"><br/>";
 	$code .= $lang['qms_details_apercu_bgcolor'];
 	$code .= "<input type=\"text\" id=\"bb_color4\" name=\"bb_color4\" $styl value=\"".$data[10]."\" onchange=\"update_bbcode()\"><br/>";
 	$code .= "<br/><input type=\"submit\" name=\"bb_valid\" value=\"".$lang['qms_details_form_save']."\"></form><br/>";

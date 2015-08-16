@@ -2,16 +2,16 @@
 /**
  * popup.php 
 
-Affiche un espionnage en détail
+Affiche un espionnage en dÃ©tail
 
  * @package QuiMSonde
  * @author Sylar
  * @link http://ogsteam.fr
  * @version : 1.5.1
- * dernière modification : 11.08.08
+ * derniÃ¨re modification : 11.08.08
 
  */
-// On récupére les données
+// On rÃ©cupÃ©re les donnÃ©es
 // L'appel direct est interdit
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
 
@@ -19,13 +19,13 @@ if (!defined('IN_SPYOGAME')) die("Hacking attempt");
 global $mod_name,$user_data,$pub_choix_private;
 global $pub_save_cfg,$pub_color_spy,$pub_color_cbl,$pub_export_tab,$pub_export_links;
 
-// Controle si une cible est bien définie et si elle est vallable
+// Controle si une cible est bien dÃ©finie et si elle est vallable
 if(!isset($pub_target)) exit();
 $table_spy = get_spies(0,"id",$pub_target);
 if(count($table_spy['id'])<1){ echo sprintf($lang['qms_popup_spy_not_found'],$pub_target); exit(); }
 
 // Ouverture du filedset
-echo"<fieldset><legend><b><font color='#80FFFF'>Détail de l'espionnage #$pub_target de ";
+echo"<fieldset><legend><b><font color='#80FFFF'>DÃ©tail de l'espionnage #$pub_target de ";
 echo $table_spy['joueur'][0]." sur ".get_user_name_by_id($table_spy['sender_id'][0])." ".help('qms_vue detail');
 echo "</font></b></legend><center>\n";
 
@@ -45,7 +45,7 @@ echo"\t<input type='radio' name='choix_private' value='true' ".($private?"checke
 echo"\t<input type='radio' name='choix_private' value='false' ".(!$private?"checked":"")." onchange='this.form.submit()' />".$lang['qms_popup_everyone']."</p>\n";
 echo"</form><br/>\n";
 
-// On récupére les espionnages de ce joueur sur la cible choisi
+// On rÃ©cupÃ©re les espionnages de ce joueur sur la cible choisi
 $table_spy = get_spies($private?$user_data['user_id']:0,'joueur',$table_spy['joueur'][0]);
 
 // S'il y a au moins 2 espionnages, Affichage du graphique des horraires
@@ -60,7 +60,7 @@ if(count($table_spy['joueur'])>1){
 	echo "</tr></table>";
 }
 
-// On recupére les stats
+// On recupÃ©re les stats
 $distance_moy = get_distance_moyen($table_spy);
 $pourcent_moy = get_pourcentage_moyen($table_spy);
 	
@@ -76,7 +76,7 @@ for($i=0;$i<count($table_spy['distance']);$i++)
 	if($table_spy['distance'][$i]<$tmp) $tmp=$table_spy['distance'][$i];
 $distance_min = $tmp;
 
-// On créé le tableau qui va accueillir les 3 petits
+// On crÃ©Ã© le tableau qui va accueillir les 3 petits
 echo"<br/><br/>\n<table width='569'><tr>";
 echo"<td width=\"33%\" align=\"center\">";
 
@@ -101,7 +101,7 @@ echo"</table>\n";
 echo"</td><td width=\"33%\" align=\"center\">";
 
 // On affiche les cibles
-// On recupére les favorites
+// On recupÃ©re les favorites
 $cible_most=get_most('cible',$table_spy);
 $cible_str1=isset($cible_most['data'][0])?"<a>".$cible_most['data'][0]."</a> <sup>".$cible_most['cnt'][0]."</sup>":"&nbsp";
 $cible_str2=isset($cible_most['data'][1])?"<a>".$cible_most['data'][1]."</a> <sup>".$cible_most['cnt'][1]."</sup>":"&nbsp";
@@ -129,7 +129,7 @@ echo"</table>\n";
 echo"</td><td width=\"33%\" align=\"center\">";
 
 // On affiche les positions
-// On recupére les favorites
+// On recupÃ©re les favorites
 $cible_most=get_most('position',$table_spy);
 $pos_str1=isset($cible_most['data'][0])?"<a>".$cible_most['data'][0]."</a> <sup>".$cible_most['cnt'][0]."</sup>":"&nbsp";
 $pos_str2=isset($cible_most['data'][1])?"<a>".$cible_most['data'][1]."</a> <sup>".$cible_most['cnt'][1]."</sup>":"&nbsp";
@@ -158,7 +158,7 @@ echo"</td></tr></table>\n";
 
 // Script D'exportation
 
-// Définition des variables
+// DÃ©finition des variables
 if(isset($pub_save_cfg)) 
 	set_qms_config("$pub_color_spy|$pub_color_cbl|".($pub_export_tab?"1":"0")."|".($pub_export_links?"1":"0"),'bbc_pup',$user_data['user_id']);
 
@@ -189,7 +189,7 @@ if(isset($_SERVER['PHP_SELF'])){
 	$hote .= $temp_phpself;
 }else
 	$hote .= $PHP_SELF;
-$table_spy = get_spies(0,"id",$pub_target); // On récupére l'espionnage en question
+$table_spy = get_spies(0,"id",$pub_target); // On rÃ©cupÃ©re l'espionnage en question
 $data.=$tag.$color_spy = "#FF6633";			// 2
 $data.=$tag.$color_cbl = "#11FF22";			// 3
 $data.=$tag.$color_proba = "#".get_color($table_spy["pourcentage"][0]);			// 4
@@ -216,7 +216,7 @@ echo"</td></tr></table>";
 echo"<input type=\"text\" id=\"data\" value=\"$data\" style=\"visibility:hidden;\">";
 echo"<textarea rows='10' id='texte_brut' style=\"visibility:hidden; position:fixed\">"; 
 echo"{tab_start}\n";
-echo"{tr}{th}{chaine_date}{/th}{th}Contrôle aérospatial{/th}{th}[color=#ff9933]Activité d'espionnage[/color]{/th}{/tr}\n";
+echo"{tr}{th}{chaine_date}{/th}{th}ContrÃ´le aÃ©rospatial{/th}{th}[color=#ff9933]ActivitÃ© d'espionnage[/color]{/th}{/tr}\n";
 echo $lang['qms_popup_bbcode_1'];
 if($chaine_alliance!="") 
 	echo $lang['qms_popup_bbcode_2'];
@@ -233,14 +233,14 @@ function get_top_hour($tableau,$titre=""){
 	$hit0=9999; 
 	$hit1=$lemoins=$leplus=$total0=$total1=$total2=$total3=$total4=$total5=$total6=$total7=0;
 
-	// initialisation du tableau et création 1ere ligne : les 24 heures et le total
+	// initialisation du tableau et crÃ©ation 1ere ligne : les 24 heures et le total
 	$ligne = "<td class=\"c\">".$lang['qms_popup_table_hour_1st_case']."</td>";
 	for($i=0;$i<24;$i++){
 		$ligne .="<td class=\"c\" align=\"center\">".sprintf($lang['qms_popup_table_hour_case'],$i)."</td>";
 	}
 	$ligne .= "<td class=\"c\">".$lang['qms_total']."</td>";
 
-	// Création du tableau
+	// CrÃ©ation du tableau
 	foreach($tableau['datadate'] as $id => $newdate){ 
 		$hour=date("G",$newdate);
 		$day=date("w",$newdate);
@@ -274,7 +274,7 @@ function get_top_hour($tableau,$titre=""){
 		if(isset($total_jour_[$i])&&$total_jour_[$i]>$hit1){$hit1=$total_jour_[$i];$totalJ_max=$total_jour_[$i];}
 	}
 
-	// Création de la table
+	// CrÃ©ation de la table
 	for($i=0;$i<24;$i++){
 		for($j=0;$j<7;$j++) ${'case'.$j} = "<th>&nbsp</th>";
 		$case7 = "<td class=\"c\">&nbsp</td>";

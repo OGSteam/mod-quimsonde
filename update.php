@@ -2,14 +2,14 @@
 /**
  * update.php 
 
-Script de mise à jour
+Script de mise Ã  jour
 
  * @package QuiMSonde
  * @author Sylar
  * @link http://www.ogsteam.fr
  * @version : 1.5
- * dernière modification : 27.04.08
- * Largement inspiré du formidable mod QuiMObserve de Santory
+ * derniÃ¨re modification : 27.04.08
+ * Largement inspirÃ© du formidable mod QuiMObserve de Santory
  */
 // L'appel direct est interdit
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
@@ -23,7 +23,7 @@ $mod_folder = "quimsonde";
 $mod_name = "QuiMSonde";
 update_mod($mod_folder, $mod_name);
 
-// Quelle version met à jour ?
+// Quelle version met Ã  jour ?
 if (file_exists(FOLDER_QMS.'/version.txt')) {
 	list($mod_name,$version) = file(FOLDER_QMS.'/version.txt'); 
 	$mod_name = trim($mod_name);
@@ -31,15 +31,15 @@ if (file_exists(FOLDER_QMS.'/version.txt')) {
 }else
 	die($lang['qms_version.txt_not_found']);
 
-// Pour les accès SQL
+// Pour les accÃ¨s SQL
 global $db;
 
-// Definition necessaire à la mise à jour
+// Definition necessaire Ã  la mise Ã  jour
 $col_distance = $col_userid = $idx_config_2 = $col_cible_name = $col_position_name = false;
 
-// Est-ce que la colonne 'distance' existe ? (ajouté à la v1.0)
-// Est-ce que la colonne 'cible_name' existe ? (ajouté à la v1.5)
-// Est-ce que la colonne 'position_name' existe ? (ajouté à la v1.5)
+// Est-ce que la colonne 'distance' existe ? (ajoutÃ© Ã  la v1.0)
+// Est-ce que la colonne 'cible_name' existe ? (ajoutÃ© Ã  la v1.5)
+// Est-ce que la colonne 'position_name' existe ? (ajoutÃ© Ã  la v1.5)
 $query = $db->sql_query('SHOW COLUMNS FROM '.TABLE_QMS);
 while ($test = mysql_fetch_assoc($query)) {
 	if ($test['Field'] == 'distance') $col_distance = true;
@@ -47,12 +47,12 @@ while ($test = mysql_fetch_assoc($query)) {
 	if ($test['Field'] == 'position_name') $col_position_name = true;
 }
 
-// Est-ce que la colonne 'user_id' existe ? (ajouté à la v1.0)
+// Est-ce que la colonne 'user_id' existe ? (ajoutÃ© Ã  la v1.0)
 $query = $db->sql_query('SHOW COLUMNS FROM '.TABLE_QMS_config);
 while ($test = mysql_fetch_assoc($query)) 
 	if ($test['Field'] == 'user_id') $col_userid = true;
 
-// Est-ce que l'index 'config_2' existe ? (ajouté à la v1.0)
+// Est-ce que l'index 'config_2' existe ? (ajoutÃ© Ã  la v1.0)
 $query = $db->sql_query('SHOW INDEX FROM '.TABLE_QMS_config);
 while ($test = mysql_fetch_assoc($query)) 
 	if ($test['Key_name'] == 'config_2') $idx_config_2 = true;
@@ -74,7 +74,7 @@ if (!$col_cible_name) // On ajoute la colonne cible_name
 	$db->sql_query('ALTER TABLE `'.TABLE_QMS.'` ADD `cible_name` VARCHAR( 64 ) NULL AFTER `cible`');
 
 
-// Effacement des fichiers innutile (ils ont été déplacé dans la v1.3)
+// Effacement des fichiers innutile (ils ont Ã©tÃ© dÃ©placÃ© dans la v1.3)
 $file_to_delete = Array(
 'accueil.php','admin.php','analyse.php','bilan.php','changelog.php','footer.php',
 'graph.php','insertion.php','interpolation.php','popup.php','qms_functions.php',
@@ -89,10 +89,10 @@ if (!$col_userid) $db->sql_query('ALTER TABLE `'.TABLE_QMS_config.'` ADD `user_i
 // On supprime l'index "config_2", les config ne sont plus unique
 if ($idx_config_2) $db->sql_query('ALTER TABLE `'.TABLE_QMS_config.'` DROP INDEX `config_2`');
 
-// On s'assure que le champ 'valeur' a bien une limite à 255 caractères
+// On s'assure que le champ 'valeur' a bien une limite Ã  255 caractÃ¨res
 $db->sql_query('ALTER TABLE `'.TABLE_QMS_config.'` CHANGE `valeur` `valeur` VARCHAR( 255 )');
 
-// Génération des configuration par défault
+// GÃ©nÃ©ration des configuration par dÃ©fault
 $db->sql_query("TRUNCATE TABLE `".TABLE_QMS_config."`");
 $insert_config = "INSERT INTO ".TABLE_QMS_config." ( `user_id`, `config`, `valeur`) VALUES ";
 $db->sql_query($insert_config."( '0', 'lignes', '15' )");
@@ -119,7 +119,7 @@ $db->sql_query($insert_config."( '0', 'searchID', '1|2|3' )");
 // On regarde si la table xtense_callbacks existe :
 $query = 'show tables like "'.TABLE_XTENSE_CALLBACKS.'" ';
 $result = $db->sql_query($query);
-// On récupère le n° d'id du mod
+// On rÃ©cupÃ¨re le nÂ° d'id du mod
 $query = "SELECT `id` FROM `".TABLE_MOD."` WHERE `action`='QuiMSonde' AND `active`='1' LIMIT 1";
 $result = $db->sql_query($query);
 $mod_id = $db->sql_fetch_row($result);
@@ -127,7 +127,7 @@ $mod_id = $mod_id[0];
 
 if($db->sql_numrows($result) != 0)
 	{
-		//Bonne nouvelle le mod xtense 2 est installé !
+		//Bonne nouvelle le mod xtense 2 est installÃ© !
 		//Maintenant on regarde si eXchange est dedans normalement il devrait pas mais on est jamais trop prudent...
 		$query = 'Select * From '.TABLE_XTENSE_CALLBACKS.' where mod_id = '.$mod_id.' ';
 		$result = $db->sql_query($query);
@@ -138,13 +138,13 @@ if($db->sql_numrows($result) != 0)
 			$query = 'INSERT INTO '.TABLE_XTENSE_CALLBACKS.' (mod_id, function, type, active) VALUES 
 			('.$mod_id.', "qms_import_enemy_spy", "ennemy_spy", 1)';
 			$db->sql_query($query);		
-			echo("<script> alert('La compatibilité du mod Qui Me Sonde avec le mod Xtense2 est installée !') </script>");
+			echo("<script> alert('La compatibilitÃ© du mod Qui Me Sonde avec le mod Xtense2 est installÃ©e !') </script>");
 		}
 	}	
 else
 	{
-	//On averti qu'Xtense 2 n'est pas installé :
-	echo("<script> alert('Le mod Xtense 2 n\'est pas installé. \nLa compatibilité du mod Qui Me Sonde ne sera donc pas installée !\nPensez à installer Xtense 2 c'est pratique ;)') </script>");
+	//On averti qu'Xtense 2 n'est pas installÃ© :
+	echo("<script> alert('Le mod Xtense 2 n\'est pas installÃ©. \nLa compatibilitÃ© du mod Qui Me Sonde ne sera donc pas installÃ©e !\nPensez Ã  installer Xtense 2 c'est pratique ;)') </script>");
 	}	
 
 ?>

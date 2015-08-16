@@ -8,17 +8,17 @@ Affiche la liste des espionnages
  * @author Sylar
  * @link http://ogsteam.fr
  * @version : 1.5.1
- * dernière modification : 11.08.08
+ * derniÃ¨re modification : 11.08.08
 
  */
-// On récupére les données
+// On rÃ©cupÃ©re les donnÃ©es
 // L'appel direct est interdit
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
 
 // Definition
 global $user_data;
 
-// Initialisation de l'affichage (public ou privé?)
+// Initialisation de l'affichage (public ou privÃ©?)
 $private=isset($pub_viewall)&&($pub_viewall=="1")? false : true;
 
 // Initialisation des Filtres
@@ -29,11 +29,11 @@ foreach( $filtre_type as $type )
 		else ${'pub_filtre_'.$type} = "-";
 if($filtre!="") $filtre_url = "&filtre_".$filtre."=".${'pub_filtre_'.$filtre};
 
-// Récupération des espionnage
-// Récupération du nombre de ligne / pages à afficher
+// RÃ©cupÃ©ration des espionnage
+// RÃ©cupÃ©ration du nombre de ligne / pages Ã  afficher
 $pages_lgs = get_qms_config('lignes',$user_data['user_id']);
 
-// Calcul du 1er enregistrement à afficher
+// Calcul du 1er enregistrement Ã  afficher
 $start=($pub_pagenum-1)*$pages_lgs;
 qms_debug("start : ".$start);
 
@@ -50,7 +50,7 @@ qms_debug("max_spy : ".$max_spy);
 while($start>=$max_spy&&$pub_pagenum>1)
 	$start=((--$pub_pagenum)-1)*$pages_lgs;
 
-// Récupération des espionnages a afficher
+// RÃ©cupÃ©ration des espionnages a afficher
 $table_spy=get_spies(
 	$private?$user_data['user_id']:0,
 	$filtre,
@@ -107,7 +107,7 @@ if($max_spy>0){
 
 	if(count($table_spy['id'])>50) make_changepage_table($pub_pagenum,$max_page,$string_url);
 
-	// Calcul du dernier enregistrement à afficher
+	// Calcul du dernier enregistrement Ã  afficher
 	$stop=$start+$pages_lgs;
 	if($stop>$max_spy) $stop=$max_spy;
 
@@ -124,7 +124,7 @@ if($max_spy>0){
 									);
 
 	// Dessin du tableau
-	echo"\n\n<!-- Entête du tableau -->\n";
+	echo"\n\n<!-- EntÃªte du tableau -->\n";
 	echo"<table>\n\t<tr>\n";
 	$string_url .= $filtre_url;
 	foreach($entete_tableau as $key => $entete){
@@ -139,7 +139,7 @@ if($max_spy>0){
 	if(isset($pub_sort)) $string_url .= "&sort=".$pub_sort."&ord=".$pub_ord;
 	echo"<form id ='spy_list' action='$string_url&pagenum=$pub_pagenum' method='post'>\n";
 
-	// Création des lignes d'espionnage
+	// CrÃ©ation des lignes d'espionnage
 	$modify_all_link = "";
 	for($j=0;$j<count($table_spy["id"]);$j++){
 
@@ -283,7 +283,7 @@ if($max_spy>0){
 </form>
 <?php
 }
-else{ // Pas d'espionnage à lister
+else{ // Pas d'espionnage Ã  lister
 	if($filtre) echo "<div align='center'>".$lang['qms_spylist_no_spy_filtered_found']."</div>\n";
 	else echo "<div align='center'>".$lang['qms_spylist_no_spy_found']."</div>\n";
 	
@@ -296,7 +296,7 @@ function make_changepage_table($pub_pagenum,$max_page,$string_url){	// Tableau p
 	global $lang;
 	if($max_page<2) return "";
 	$next_page_link = $prev_page_link = "";
-	// Lien vers page précédente
+	// Lien vers page prÃ©cÃ©dente
 	if($pub_pagenum>1) $prev_page_link =  " onclick=\"window.location = '$string_url&pagenum=".($pub_pagenum-1)."';\"";
 	// Lien vers page suivante
 	if($pub_pagenum<$max_page) $next_page_link =  " onclick=\"window.location = '$string_url&pagenum=".($pub_pagenum+1)."';\"";

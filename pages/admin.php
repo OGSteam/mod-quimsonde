@@ -2,18 +2,18 @@
 /**
  * admin.php 
 
-Page de configuration, réservé aux Admins
+Page de configuration, rÃ©servÃ© aux Admins
 
  * @package QuiMSonde
  * @author Sylar
   * @link http://ogsteam.fr
  * @version : 1.5.1
- * dernière modification : 11.08.08
+ * derniÃ¨re modification : 11.08.08
 */
 // L'appel direct est interdit
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
 global $db,$user_data,$config_list;
-	// Affichage du formulaire réservé à l'admin 
+	// Affichage du formulaire rÃ©servÃ© Ã  l'admin 
 	// Ouverture du FiledSet
 	echo"<fieldset>\n<legend><b><font color='#80FFFF'>".$lang['qms_menu_admin_long'].help('qms_admin')."</font></b></legend>\n\n";
 ?>
@@ -97,7 +97,7 @@ global $db,$user_data,$config_list;
 					<th><input name='add_callbacks' type='submit' value='<?php echo $lang['qms_restore_xtense2_callback_submit']; ?>'/></th>
 				</tr>
 <?php
-	// Si le mode QuiMobserve est installé, on affiche l'option d'importation
+	// Si le mode QuiMobserve est installÃ©, on affiche l'option d'importation
 	$query = "SELECT `active` FROM `".TABLE_MOD."` WHERE `action`='QuiMobserve' AND `active`='1' LIMIT 1";
 	if ($db->sql_numrows($db->sql_query($query))){	
 		echo"<tr><th width='40%'>".$lang['qms_import_from_quimobserve'].help('qms_impoter')."</th>";

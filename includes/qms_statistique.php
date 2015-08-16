@@ -2,13 +2,13 @@
 /**
  * qms_statistique.php 
 
-Procédures et Fonctions liées aux statistiques
+ProcÃ©dures et Fonctions liÃ©es aux statistiques
 
  * @package QuiMSonde
  * @author Sylar
  * @link http://ogsteam.fr
  * @version : 1.5.1
- * dernière modification : 11.08.08
+ * derniÃ¨re modification : 11.08.08
 
  */
 // L'appel direct est interdit
@@ -60,28 +60,28 @@ function get_list($type,$private,$filtre_where=""){								// Renvoi la liste de
 	}
 	return $tab;
 }
-function get_most($data,$tableau){												//Renvoi de la valeur et le nombre de $data le plus trouvé
+function get_most($data,$tableau){												//Renvoi de la valeur et le nombre de $data le plus trouvÃ©
 	static $top1,$cnt1,$top2,$cnt2,$top3,$cnt3;
 	$max_spy=count($tableau[$data]);
 	$i=0;
 	// On defile tous les champ du tableau
 	for($a=0;$a<$max_spy;$a++){
-		// On recupére le champ de la donnée $data
+		// On recupÃ©re le champ de la donnÃ©e $data
 		$cible=$tableau[$data][$a];
-		// Si l'on a une donnée
+		// Si l'on a une donnÃ©e
 		if($cible){
 			$ok=0;
 			// On regarde dans le tableau $tmp si elle y est deja
 			for($j=0;$j<$i;$j++)	
 				if($tmp['data'][$j]==$cible){
-					// Si oui, on incrémente le compte
+					// Si oui, on incrÃ©mente le compte
 					$tmp['cnt'][$j]+=1;
 					$ok=1;
 				}
 			if(!$ok){
-				// Si non, on ajoute la donnée a la fin du tableau $tmp,
+				// Si non, on ajoute la donnÃ©e a la fin du tableau $tmp,
 				$tmp['data'][$i]=$cible;
-				// Et avec un count à 1.
+				// Et avec un count Ã  1.
 				$tmp['cnt'][$i]=1;
 				$i+=1;
 			}
@@ -93,7 +93,7 @@ function get_most($data,$tableau){												//Renvoi de la valeur et le nombre
 	}else
 		return false;
 }
-function get_list_order($tableau,$sort="",$ord=""){								// Classer le tableau en fonction d'une donnée ($sort) et d'un sens ($ord)
+function get_list_order($tableau,$sort="",$ord=""){								// Classer le tableau en fonction d'une donnÃ©e ($sort) et d'un sens ($ord)
 	if(($sort=='')||($sort=='date')) $sort='datadate';
 	if($ord=='') $ord='desc';
 	$max_spy=count($tableau[$sort]);
@@ -150,10 +150,10 @@ function get_pourcentage_moyen($tableau){										// Renvoi le pourcentage de d
 	else $retour = 0;
 	return $retour;
 }
-function get_time_analyse($tableau){											// Renvoi la période sans espionnage la plus longue
+function get_time_analyse($tableau){											// Renvoi la pÃ©riode sans espionnage la plus longue
 // retour : 
-// [0] : Période tranquille la plus longue
-// [1] : tag de <a> pour popup sur la période la plus tranquille (qui donne les 3 plus longues période)
+// [0] : PÃ©riode tranquille la plus longue
+// [1] : tag de <a> pour popup sur la pÃ©riode la plus tranquille (qui donne les 3 plus longues pÃ©riode)
 // [2] : Temps depuis lequel il n'y a pas eu d'espionnage
 // [3] : tag de <a> pour un popup donnant le temps moyen entre les espionnages
 	global $lang;
@@ -237,7 +237,7 @@ function get_time_analyse($tableau){											// Renvoi la période sans espionn
 		$link2 = "";
 	return Array("+cool" => $best_time1[3],"link_table+cool" => $link, "since" => $last_cool_time,"link_moyenne" => $link2);
 }
-function get_format_time($time){												// Renvoi une durée sous la forme de xj xh xm xs.
+function get_format_time($time){												// Renvoi une durÃ©e sous la forme de xj xh xm xs.
 	$retour = "";
 	$time -= 3600;
 	if(date("z",$time)>0)	 $retour .= date("z",$time)."j ";
@@ -256,7 +256,7 @@ function get_color($poucentage,$mini=0,$max=100){								// Renvoi la couleur en
 		$couleurHexa="FF".$couleur.$couleur;
 		return $couleurHexa;
 }
-function get_clear_distance($distance){											// Renvoi le nombre de système, galaxie ou planetes correspondant à une distance
+function get_clear_distance($distance){											// Renvoi le nombre de systÃ¨me, galaxie ou planetes correspondant Ã  une distance
 	global $lang;
 	if($distance>=20000){
 		// Plusieurs galaxie
@@ -267,7 +267,7 @@ function get_clear_distance($distance){											// Renvoi le nombre de système
 		$retour['nb'] = ($distance-1000)/5;
 		$retour['type'] = $retour['nb']==1?$lang['qms_position']:$lang['qms_positions'];
 	}else{
-		// Plusieurs système
+		// Plusieurs systÃ¨me
 		$retour['nb'] = ($distance-2700)/95;
 		$retour['type'] = $retour['nb']==1?$lang['qms_systeme']:$lang['qms_systemes'];
 	}

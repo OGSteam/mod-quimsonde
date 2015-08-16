@@ -8,13 +8,13 @@ Pied de page
  * @author Sylar
  * @link http://ogsteam.fr
  * @version : 1.5.1
- * dernière modification : 11.08.08
+ * derniÃ¨re modification : 11.08.08
 
  */
 // L'appel direct est interdit
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
 global $mod_name;
-//On récupère la version actuel du mod   
+//On rÃ©cupÃ¨re la version actuel du mod   
 $version=get_QMS_version();
 $link_quimobserve = "'";
 $link_quimsonde = "'";

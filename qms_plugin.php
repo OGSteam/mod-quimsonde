@@ -8,8 +8,8 @@ Script d'interconnexion avec la barre d'outils Xtense.
  * @author Sylar
  * @link http://www.ogsteam.fr
  * @version : 1.5c
- * dernière modification : 14.08.08
- * Largement inspiré du formidable mod QuiMObserve de Santory
+ * derniÃ¨re modification : 14.08.08
+ * Largement inspirÃ© du formidable mod QuiMObserve de Santory
  */
 // L'appel direct est interdit
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
@@ -21,7 +21,7 @@ define("FOLDER_LANG","mod/QuiMSonde/lang");
 // Les langues
 include(FOLDER_LANG."/lang_french.php");
 //-------------------------------------------------------------------------------------------------------------------
-// Renvoi le vrai #id du joueur qui s'est fait espionné (dans le cas d'un sitting, c'est pas forcement le même qui est connecté)
+// Renvoi le vrai #id du joueur qui s'est fait espionnÃ© (dans le cas d'un sitting, c'est pas forcement le mÃªme qui est connectÃ©)
 function get_real_sender_id($position){
 	global $db;
 	$query_limit = "SELECT  `user_id`  FROM `".TABLE_USER_BUILDING."` WHERE `coordinates` = '".$position."'";
@@ -61,7 +61,7 @@ function set_qms_config($value,$key,$userid=0){
 	return $result;
 }
 //----------------------------------------------------------------------------------------------------------------------------------------------------//
-function get_coord($position){	// Renvoi le rang de la planète par rapport à une position formatée GG:SS:RR
+function get_coord($position){	// Renvoi le rang de la planÃ¨te par rapport Ã  une position formatÃ©e GG:SS:RR
 	$dPoint = strpos($position,":");	
 	$galaxy = substr ($position,0,$dPoint);
 	$tmp = substr ($position,$dPoint+1);	
@@ -71,7 +71,7 @@ function get_coord($position){	// Renvoi le rang de la planète par rapport à une
 	return array($galaxy,$system,$row); 
 }
 //----------------------------------------------------------------------------------------------------------------------------------------------------//
-function get_user_id($position){	// recupére le nom du joueur et l'alliance d'une certaine position
+function get_user_id($position){	// recupÃ©re le nom du joueur et l'alliance d'une certaine position
 	global $db;	
 	$coord=get_coord($position);
 	$player = "?";	
@@ -84,21 +84,21 @@ function get_user_id($position){	// recupére le nom du joueur et l'alliance d'un
 	return array($player,$ally);
 }
 //-------------------------------------------------------------------------------------------------------------------
-function get_distance($depart,$arrive){			// Renvoi la distance entre 2 planètes
+function get_distance($depart,$arrive){			// Renvoi la distance entre 2 planÃ¨tes
 	$c_dep=get_coord($depart);
 	$c_arr=get_coord($arrive);
 	if($c_dep[0]==$c_arr[0])									// De la meme galaxie
-		if($c_dep[1]==$c_arr[1])								// Du meme système
+		if($c_dep[1]==$c_arr[1])								// Du meme systÃ¨me
 			if($c_dep[2]>$c_arr[2])
-				$dist=1000+($c_dep[2]-$c_arr[2])*5;		// Distance entre 2 planètes d'un meme systèmes.
+				$dist=1000+($c_dep[2]-$c_arr[2])*5;		// Distance entre 2 planÃ¨tes d'un meme systÃ¨mes.
 			else
 				$dist=1000+($c_arr[2]-$c_dep[2])*5; 
-		else															// Pas du même système
+		else															// Pas du mÃªme systÃ¨me
 			if($c_dep[1]>$c_arr[1])
-				$dist=2700+($c_dep[1]-$c_arr[1])*95;		// Distance entre 2 systèmes.
+				$dist=2700+($c_dep[1]-$c_arr[1])*95;		// Distance entre 2 systÃ¨mes.
 			else
 				$dist=2700+($c_arr[1]-$c_dep[1])*95;
-	else																// Pas la même galaxie.
+	else																// Pas la mÃªme galaxie.
 		if($c_dep[0]>$c_arr[0])
 			$dist=($c_dep[0]-$c_arr[0])*20000;				// Distance entre 2 Galaxie.
 		else
@@ -108,13 +108,13 @@ function get_distance($depart,$arrive){			// Renvoi la distance entre 2 planètes
 //----------------------------------------------------------------------------------------------------------------------------------------------------//
 function add_espionnage($string,$fp=""){      // Ajoute un rapport d'espionnage dans la table sql
 	global $db, $user_data, $lang;
-	//on recupere heure date et probabilité.
+	//on recupere heure date et probabilitÃ©.
 	preg_match_all($lang['regex_xtense1_date_heure'], $string,$out);
-	//on verifie si le mois en cours est inferieur au mois du sondage (pour eviter le bug du changement d année)
+	//on verifie si le mois en cours est inferieur au mois du sondage (pour eviter le bug du changement d annÃ©e)
 	$year = date('Y');
 	if(date('m') < $out[2][0])	$year -= 1; 
 	$date = mktime($out[4][0],$out[5][0],$out[6][0],$out[2][0],$out[3][0],$year);
-	//on recherche les coordonnées
+	//on recherche les coordonnÃ©es
 	$test = preg_match_all($lang['regex_xtense1_coord'],$out[7][0],$position);
 	$esp_name = $position[1][0];
 	$esp_coor = $position[2][0];
@@ -130,7 +130,7 @@ function add_espionnage($string,$fp=""){      // Ajoute un rapport d'espionnage 
 		if ($nb == 0){	// et que le rapport n'existe pas deja
 			$userid=get_user_id($esp_coor);
 			if(!$userid[0]) $userid[0]="?";
-			// on l'ajoute à la table
+			// on l'ajoute Ã  la table
 			$distance=get_distance($esp_coor,$position[0][1]);
 			$query = "INSERT INTO ".TABLE_QMS." ( `id` , `sender_id` , `position` , `position_name`, `joueur`,`alliance`,`distance`,`cible` , `cible_name`,  `datadate`,  `pourcentage`) VALUES ( NULL, '".$real_sender_id."' , '".$esp_coor."', '".$esp_name."', '".$userid[0]."', '".$userid[1]."', '".$distance."', '".$cib_coor."', '".$cib_name."', '".$date."', '".$out[8][0]."' 	)";
 			$result = $db->sql_query($query);

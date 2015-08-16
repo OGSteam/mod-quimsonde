@@ -8,8 +8,8 @@ Script d'interconnexion avec la barre d'outils Xtense v2.
  * @author Sylar
  * @link http://www.ogsteam.fr
  * @version : 1.4b
- * dernière modification : 08.04.08
- * Largement inspiré du formidable mod QuiMObserve de Santory
+ * derniÃ¨re modification : 08.04.08
+ * Largement inspirÃ© du formidable mod QuiMObserve de Santory
  */
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
 #
@@ -58,9 +58,9 @@ class QuiMSonde_Callback extends Callback {
 				$date = date("m-d H:i:s",$spy['time']);
 				$a = qms_add_spy(get_real_sender_id($coords_to), $coords_from, $user_info[0], $user_info[1], $distance,$coords_to, $spy['time'], $spy['proba'], $from_name, $to_name);
 				if($a==0)
-					$io->append_call_message("L'espionnage de {$coords_to} ({$to_name}) du {$date} existe déjà.", Io::WARNING);
+					$io->append_call_message("L'espionnage de {$coords_to} ({$to_name}) du {$date} existe dÃ©jÃ .", Io::WARNING);
 				else
-					$io->append_call_message("L'espionnage de {$coords_to} ({$to_name}) du {$date} a bien été enregistré.", Io::SUCCESS);
+					$io->append_call_message("L'espionnage de {$coords_to} ({$to_name}) du {$date} a bien Ã©tÃ© enregistrÃ©.", Io::SUCCESS);
 				$add += $a;
 //			}
 			$io->append_call_message("Un total de {$add} espionnages ont &ecute;t&ecute; enregistr&ecute;s", Io::SUCCESS);
@@ -87,11 +87,11 @@ function QuiMSonde_get_callbacks() {
 if(defined('INSTALL_MOD_NAME')){
 //	if(file_exists($a="mod/Xtense2/includes/functions.php")) {
 //		include($a);
-		// Sinon, si c'est un module plus ancien, on applique l'ancienne méthode
+		// Sinon, si c'est un module plus ancien, on applique l'ancienne mÃ©thode
 		global $db,$table_prefix;
 		define("TABLE_XTENSE_CALLBACKS", $table_prefix."xtense_callbacks");
 //		if(function_exists('install_callbacks')){
-			// Module XTense v2.0b5 détecté
+			// Module XTense v2.0b5 dÃ©tectÃ©
 //			install_callbacks(QuiMSonde_get_callbacks());
 //		}else{
 			// Quel est l'ID du mod ?
@@ -120,7 +120,7 @@ if(!defined('TABLE_QMS')){
 // Importation d'un espionnage depuis xtense2
 function qms_import_enemy_spy($enemy_spy){
 	global $user;
-	// Nombre d'espionnage renvoyé par la barre
+	// Nombre d'espionnage renvoyÃ© par la barre
 	$nb_spy = count($enemy_spy);
 	$add=0;
 	for($i=0;$i<$nb_spy;$i++){
@@ -169,17 +169,17 @@ function qms_add_spy($sender,$from,$name,$alliance,$distance,$to,$time,$proba,$f
 	return 1;
 }
 
-function qms_get_distance($c_dep,$c_arr){			// Renvoi la distance entre 2 planètes
+function qms_get_distance($c_dep,$c_arr){			// Renvoi la distance entre 2 planÃ¨tes
 	if($c_dep[0]==$c_arr[0])							// De la meme galaxie
-		if($c_dep[1]==$c_arr[1])						// Du meme système
-			$dist=1000+abs($c_dep[2]-$c_arr[2])*5;		// Distance entre 2 planètes d'un meme systèmes.
-		else											// Pas du même système
-			$dist=2700+abs($c_dep[1]-$c_arr[1])*95;		// Distance entre 2 systèmes.
-	else												// Pas la même galaxie.
+		if($c_dep[1]==$c_arr[1])						// Du meme systÃ¨me
+			$dist=1000+abs($c_dep[2]-$c_arr[2])*5;		// Distance entre 2 planÃ¨tes d'un meme systÃ¨mes.
+		else											// Pas du mÃªme systÃ¨me
+			$dist=2700+abs($c_dep[1]-$c_arr[1])*95;		// Distance entre 2 systÃ¨mes.
+	else												// Pas la mÃªme galaxie.
 		$dist=abs($c_dep[0]-$c_arr[0])*20000;			// Distance entre 2 Galaxie.
 	return $dist;
 }
-function qms_get_user_info($coord){	// recupére le nom du joueur et l'alliance d'une certaine position
+function qms_get_user_info($coord){	// recupÃ©re le nom du joueur et l'alliance d'une certaine position
 	global $db;	
 	list($player,$ally) = Array ("?","");	
 	$query = "SELECT  `player` , `ally`  FROM `".TABLE_UNIVERSE."` WHERE `galaxy` = ".$coord[0]." and `system` = ".$coord[1]." and `row` = ".$coord[2];
@@ -191,14 +191,14 @@ function qms_get_user_info($coord){	// recupére le nom du joueur et l'alliance d
 	}
 	return array($player,$ally);
 }
-function get_real_sender_id($position){		// Renvoi le vrai #id du joueur qui s'est fait espionné (dans le cas d'un sitting, c'est pas forcement le même qui est connecté)
+function get_real_sender_id($position){		// Renvoi le vrai #id du joueur qui s'est fait espionnÃ© (dans le cas d'un sitting, c'est pas forcement le mÃªme qui est connectÃ©)
 	global $db;
 	$query_limit = "SELECT  `user_id`  FROM `".TABLE_USER_BUILDING."` WHERE `coordinates` = '".$position."'";
 	$result=$db->sql_query($query_limit);
 	list($user_id)=$db->sql_fetch_row($result);
 	return $user_id;
 }
-// function get_coord($position){						// Renvoi le rang de la planète par rapport à une position formatée GG:SS:RR
+// function get_coord($position){						// Renvoi le rang de la planÃ¨te par rapport Ã  une position formatÃ©e GG:SS:RR
 	// $dPoint = strpos($position,":");	
 	// $galaxy = substr ($position,0,$dPoint);
 	// $tmp = substr ($position,$dPoint+1);	
