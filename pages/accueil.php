@@ -8,7 +8,7 @@ Page Accueil
  * @author Sylar
  * @link http://ogsteam.fr
  * @version : 1.5.1
- * dernière modification : 11.08.08
+ * derniÃ¨re modification : 11.08.08
 
  */
 // L'appel direct est interdit
@@ -20,7 +20,7 @@ global $user_data;
 // Definition
 $most = Array();
 
-// On récupére les données
+// On rÃ©cupÃ©re les donnÃ©es
 $table_spy=get_spies($user_data['user_id'],"","");
 $max_spy=count($table_spy['cible']);
 $temp1=array('cible','joueur');
@@ -33,14 +33,14 @@ foreach($temp1 as $temp2)
 // Ouverture du FiledSet
 echo"<fieldset>\n<legend><b><font color='#80FFFF'>".$lang['qms_menu_accueil'].help('qms_accueil')."</font></b></legend>\n\n";
 
-// Résumé des espionnages.
-echo "\n\n<!-- Resumé des Espionnages -->\n<table width='60%%'>\n<tr><td class='l'><p>";
+// RÃ©sumÃ© des espionnages.
+echo "\n\n<!-- ResumÃ© des Espionnages -->\n<table width='60%%'>\n<tr><td class='l'><p>";
 if($max_spy>0)
 	echo sprintf($lang['qms_resume_2_lignes'],$max_spy,$most['joueur_cnt'],$most['joueur'],$most['cible_cnt'],$most['cible']);
 else
 	echo $lang['qms_resume_rien_du_tout'];
 echo "</p></td></tr>\n</table>\n<br/>\n";
-// S'il y a des espionnages, on affiche les 1 à 3 premiers
+// S'il y a des espionnages, on affiche les 1 Ã  3 premiers
 if($max_spy>0)
 {	
 	// 1, 2 ou 3 ?

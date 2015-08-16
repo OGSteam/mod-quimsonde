@@ -8,13 +8,13 @@ Variables communes
  * @author Sylar
  * @link http://www.ogsteam.fr
  * @version : 1.5
- * dernière modification : 29.06.08
- * Largement inspiré du formidable mod QuiMObserve de Santory
+ * derniÃ¨re modification : 29.06.08
+ * Largement inspirÃ© du formidable mod QuiMObserve de Santory
  */
 // L'appel direct est interdit
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
 
-/*/ Mode débug
+/*/ Mode dÃ©bug
 define( "QMS_DEBUG", 0 );
 error_reporting(E_ALL);//*/
 

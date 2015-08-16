@@ -2,14 +2,14 @@
 /**
  * install.php 
  
-Procédure d'installation du mod.
+ProcÃ©dure d'installation du mod.
 
  * @package QuiMSonde
  * @author Sylar
  * @link http://www.ogsteam.fr
  * @version : 1.5
- * dernière modification : 27.04.08
- * Largement inspiré du formidable mod QuiMObserve de Santory
+ * derniÃ¨re modification : 27.04.08
+ * Largement inspirÃ© du formidable mod QuiMObserve de Santory
  */
 // L'appel direct est interdit
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
@@ -25,10 +25,10 @@ $mod_folder = "quimsonde";
 $is_ok = install_mod ($mod_folder);
 if ($is_ok == true)
 	{
-		// Est-ce qu'une table existe déjà ? 
+		// Est-ce qu'une table existe dÃ©jÃ  ? 
 		$query = $db->sql_query('SHOW TABLES LIKE "'.TABLE_QMS.'" ');
 		if($db->sql_numrows($query) != 0)
-			{	// Oui, alors on regarde si y'a bien la colonne distance, ajouté à la v1.0 
+			{	// Oui, alors on regarde si y'a bien la colonne distance, ajoutÃ© Ã  la v1.0 
 				$col_distance = false;
 				$query = $db->sql_query('SHOW COLUMNS FROM '.TABLE_QMS);
 				while ($test = mysql_fetch_assoc($query)) 
@@ -36,14 +36,14 @@ if ($is_ok == true)
 					$col_distance = true;
 				if($col_distance == false)
 					{
-						// Si elle n'y est pas, on bloque le numéro de version pour faire une mise à jour ensuite
+						// Si elle n'y est pas, on bloque le numÃ©ro de version pour faire une mise Ã  jour ensuite
 						$version = "1.0";
 						echo $lang['qms_old_database_found'];
 					}
 			}
 		else
 			{	// Sinon...
-				//Création de la table des espionnages
+				//CrÃ©ation de la table des espionnages
 				$query = "CREATE TABLE `".TABLE_QMS."` (
 					`id` INT( 11 ) NOT NULL AUTO_INCREMENT ,
 					`sender_id` INT( 11 ) DEFAULT '0' NOT NULL ,
@@ -62,7 +62,7 @@ if ($is_ok == true)
 					UNIQUE ( `id`))";
 				$db->sql_query($query);
 			}
-		// Création de la table des configurations
+		// CrÃ©ation de la table des configurations
 		$db->sql_query('DROP TABLE IF EXISTS `'.TABLE_QMS_config.'`');
 		$query = "CREATE TABLE `".TABLE_QMS_config."` (
 			`user_id` INT( 11 ) NOT NULL DEFAULT '0' ,
@@ -71,7 +71,7 @@ if ($is_ok == true)
 			INDEX ( `config` ))";
 		$db->sql_query($query);
 
-		// Génération des configuration par défault
+		// GÃ©nÃ©ration des configuration par dÃ©fault
 		$insert_config = "INSERT INTO ".TABLE_QMS_config." ( `user_id`, `config`, `valeur`) VALUES ";
 		$db->sql_query($insert_config."( '0', 'lignes', '15' )");
 		$db->sql_query($insert_config."( '0', 'jours', '365' )");
@@ -94,7 +94,7 @@ if ($is_ok == true)
 		// On regarde si la table xtense_callbacks existe :
 		$query = 'show tables like "'.TABLE_XTENSE_CALLBACKS.'" ';
 		$result = $db->sql_query($query);
-		// On récupère le n° d'id du mod
+		// On rÃ©cupÃ¨re le nÂ° d'id du mod
 		$query = "SELECT `id` FROM `".TABLE_MOD."` WHERE `action`='QuiMSonde' AND `active`='1' LIMIT 1";
 		$result = $db->sql_query($query);
 		$mod_id = $db->sql_fetch_row($result);
@@ -102,7 +102,7 @@ if ($is_ok == true)
 
 		if($db->sql_numrows($result) != 0)
 			{
-				//Bonne nouvelle le mod xtense 2 est installé !
+				//Bonne nouvelle le mod xtense 2 est installÃ© !
 				//Maintenant on regarde si eXchange est dedans normalement il devrait pas mais on est jamais trop prudent...
 				$query = 'Select * From '.TABLE_XTENSE_CALLBACKS.' where mod_id = '.$mod_id.' ';
 				$result = $db->sql_query($query);
@@ -113,17 +113,17 @@ if ($is_ok == true)
 					$query = 'INSERT INTO '.TABLE_XTENSE_CALLBACKS.' (mod_id, function, type, active) VALUES 
 					('.$mod_id.', "qms_import_enemy_spy", "ennemy_spy", 1)';
 					$db->sql_query($query);		
-					echo("<script> alert('La compatibilité du mod Qui Me Sonde avec le mod Xtense2 est installée !') </script>");
+					echo("<script> alert('La compatibilitÃ© du mod Qui Me Sonde avec le mod Xtense2 est installÃ©e !') </script>");
 				}
 			}	
 		else
 			{
-			//On averti qu'Xtense 2 n'est pas installé :
-			echo("<script> alert('Le mod Xtense 2 n\'est pas installé. \nLa compatibilité du mod Qui Me Sonde ne sera donc pas installée !\nPensez à installer Xtense 2 c'est pratique ;)') </script>");
+			//On averti qu'Xtense 2 n'est pas installÃ© :
+			echo("<script> alert('Le mod Xtense 2 n\'est pas installÃ©. \nLa compatibilitÃ© du mod Qui Me Sonde ne sera donc pas installÃ©e !\nPensez Ã  installer Xtense 2 c'est pratique ;)') </script>");
 			}	
 	}
 else
 	{
-		echo  "<script>alert('Désolé, un problème a eu lieu pendant l'installation, corrigez les problèmes survenue et réessayez.');</script>";
+		echo  "<script>alert('DÃ©solÃ©, un problÃ¨me a eu lieu pendant l'installation, corrigez les problÃ¨mes survenue et rÃ©essayez.');</script>";
 	}
 ?>

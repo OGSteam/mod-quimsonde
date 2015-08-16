@@ -8,7 +8,7 @@ Code pour insertion de la zone de calendrier.
  * @author Sylar
  * @link http://ogsteam.fr
  * @version : 1.5.1
- * dernière modification : 11.08.08
+ * derniÃ¨re modification : 11.08.08
 
  */
 // L'appel direct est interdit

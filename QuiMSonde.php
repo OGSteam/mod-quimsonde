@@ -10,7 +10,7 @@ appel des fichiers
  * @author Sylar
  * @link http://ogsteam.fr
  * @version : 1.5.1
- * derniËre modification : 11.08.08
+ * derni√®re modification : 11.08.08
  */
 // L'appel direct est interdit
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
@@ -43,7 +43,7 @@ if($popup=="_2") {
 
 if(!$graph && $popup==""){ // Ni un graph, ni un popup
 
-	// Si on a demandÈ de rÈinstaller le callbacks
+	// Si on a demand√© de r√©installer le callbacks
 	if(isset($pub_add_callbacks)){
 		define("INSTALL_MOD_NAME",$mod_name);
 		include("_xtense.php");
@@ -84,7 +84,7 @@ if(!$graph && $popup==""){ // Ni un graph, ni un popup
 		$retour = $lang['qms_admin_config_updated'];
 	}
 	
-	// Click r‡z user
+	// Click r√†z user
 	if(isset($pub_restore_user)){
 		delete_qms_config($user_data['user_id']);
 		$retour = $lang['qms_admin_defaut_restored'];
@@ -112,7 +112,7 @@ if(!$graph && $popup==""){ // Ni un graph, ni un popup
 	// Si on vient d'ajouter un espionnage...
 	if (isset($pub_espionage))	$retour=prepare_espionnage($pub_espionage);
 
-	// Si la page a afficher n'est pas dÈfinie, on affiche la premiËre
+	// Si la page a afficher n'est pas d√©finie, on affiche la premi√®re
 	if (!isset($pub_page)) $pub_page = $pages[0]['fichier'];
 
 	// On vient de modifier le nombre de lignes par page 
@@ -139,10 +139,10 @@ if(!$graph && $popup==""){ // Ni un graph, ni un popup
 	if(get_qms_config('banniere',$user_data['user_id'])=="yes")
 		echo"<center><img src='$image_logo'></center>";
 
-	// Affichage du menu et de la page demandÈe
+	// Affichage du menu et de la page demand√©e
 	menu($pub_page);
 
-	//Insertion du message de validation si dÈfini
+	//Insertion du message de validation si d√©fini
 	if (isset($retour))	echo"<blink>$retour</blink>";
 
 	// Affichage du contenu de la page

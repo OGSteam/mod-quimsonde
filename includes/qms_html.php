@@ -2,18 +2,18 @@
 /**
  * qms_html.php 
 
-Procédures et Fonctions liées au code HTML
+ProcÃ©dures et Fonctions liÃ©es au code HTML
 
  * @package QuiMSonde
  * @author Sylar
  * @link http://ogsteam.fr
  * @version : 1.5.1
- * dernière modification : 11.08.08
+ * derniÃ¨re modification : 11.08.08
 
  */
 // L'appel direct est interdit
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
-function menu($pub_page){											// Création du menu
+function menu($pub_page){											// CrÃ©ation du menu
 	global $pages, $image_menu, $mod_name,$user_data;
 	$ligne1=$ligne2="";
 	$width = 80;$height =44;
@@ -47,7 +47,7 @@ function menu($pub_page){											// Création du menu
 	echo "\n\n<!-- menu -->\n<table><tbody><tr align='center'>$ligne2\n</tr></tbody></table>\n";
 	echo "\n\n<!-- page ".$pub_page.".php -->\n";
 }
-function get_galaxy_link($position){								// Renvoi le lien de recherche vers un systeme donné
+function get_galaxy_link($position){								// Renvoi le lien de recherche vers un systeme donnÃ©
 	$tmp = get_coord($position);
 	$ret = $tmp[0]."&system=".$tmp[1];
 	return $ret;
@@ -75,12 +75,12 @@ function make_liste_string($type,$data,$private=1){					// Rempli la zone <selec
 			$string .="\t\t\t\t\t<option value='$value'$selected>$texte</option>\n";
 		}
 	}else
-		$string = "";// "<i>Aucune donnée trouvée...</i>";
+		$string = "";// "<i>Aucune donnÃ©e trouvÃ©e...</i>";
 	return $string;
 }
-function get_tooltip($gtarget,$gtype,$from_popup=0,$id=0,$member=0){	// Renvoi un code de tooltip inspiré de la page galaxie selon le Type "Joueur" ou "Alliance";
+function get_tooltip($gtarget,$gtype,$from_popup=0,$id=0,$member=0){	// Renvoi un code de tooltip inspirÃ© de la page galaxie selon le Type "Joueur" ou "Alliance";
 	global $mod_name,$pub_viewall,$lang;
-	// Depuis où? et donc vers où?
+	// Depuis oÃ¹? et donc vers oÃ¹?
 	if($from_popup!=0){
 		// Depuis le popup
 		$href_start ="onclick=\"window.opener.document.location.href = \'";
@@ -187,11 +187,11 @@ function get_tooltip($gtarget,$gtype,$from_popup=0,$id=0,$member=0){	// Renvoi u
 	$retour = " onmouseover=\"this.T_WIDTH=260;this.T_TEMP=15000;return escape('".$tooltip."')\"";
 	return $retour;
 }
-function make_spy_OGameStyle($table_spy,$j,$from_popup=0){			// Affiche l'espionnage $j de la table $table_spy a la manière de la page message de OGame
+function make_spy_OGameStyle($table_spy,$j,$from_popup=0){			// Affiche l'espionnage $j de la table $table_spy a la maniÃ¨re de la page message de OGame
 	// Qui affiche?
 	global $user_data,$lang;
 
-	// Depuis où? et donc vers où?
+	// Depuis oÃ¹? et donc vers oÃ¹?
 	if($from_popup!=0){
 		// Depuis le popup
 		$href_start ="onclick=\"window.opener.document.location.href = '";
@@ -202,7 +202,7 @@ function make_spy_OGameStyle($table_spy,$j,$from_popup=0){			// Affiche l'espion
 		$href_stop = "'";
 	}
 
-	// Si le nom enregistré n'est pas inconnu
+	// Si le nom enregistrÃ© n'est pas inconnu
 	if($table_spy['joueur'][$j]=="?"){
 		$s_joueur="<i>".$lang['qms_joueur_inconnu']."</i>";
 	}else{
@@ -229,14 +229,14 @@ function make_spy_OGameStyle($table_spy,$j,$from_popup=0){			// Affiche l'espion
 	// Texte pour la date au format OGame : 11-15 18:05:49
 	$s_date="<b>".date($lang['qms_format_date_ogame'],$table_spy["datadate"][$j])."</b>";
 
-	// Texte pour le nom de la planete cible (récupére dans la table building)
+	// Texte pour le nom de la planete cible (rÃ©cupÃ©re dans la table building)
 	$s_cible_name = get_user_data_from_coord('planet_name',$table_spy["cible"][$j]);
 
 	// Texte pour la position de la planete cible
 	$s_cible = "<b><a ".$href_start."index.php?action=galaxy&galaxy=".get_galaxy_link($table_spy["cible"][$j]).$href_stop;
 	$s_cible .=get_tooltip($table_spy["cible"][$j],'Cible',$from_popup,$table_spy["id"][$j]).">".$table_spy["cible"][$j]."</a></b>";
 
-	// Texte pour la probabilité de destruction
+	// Texte pour la probabilitÃ© de destruction
 	$s_proba = "<font color='#".get_color($table_spy["pourcentage"][$j])."'><b>".$table_spy["pourcentage"][$j]."%</color></font></b>";
 		
 	/*/ Lien pour effacer l'espionnage            <<<<<<<<------------ BUGGED ----------------->
@@ -248,18 +248,18 @@ function make_spy_OGameStyle($table_spy,$j,$from_popup=0){			// Affiche l'espion
 			$s_target="target='_parent'";
 		else
 			$s_target="";
-		$s_action = "<form method='POST' $s_target action='$delete_link' onsubmit=\"return confirm('Etes-vous sûr de vouloir supprimer l\'espionnage de ".$table_spy['joueur'][$j]." ?')\"><input type='image' width='15' height='15' src='".FOLDER_QMS."/images/delete.png' name = 'supprimer espionnage n°".$table_spy["id"][$j]."'></form>";
+		$s_action = "<form method='POST' $s_target action='$delete_link' onsubmit=\"return confirm('Etes-vous sÃ»r de vouloir supprimer l\'espionnage de ".$table_spy['joueur'][$j]." ?')\"><input type='image' width='15' height='15' src='".FOLDER_QMS."/images/delete.png' name = 'supprimer espionnage nÂ°".$table_spy["id"][$j]."'></form>";
 
-		// On récupére le nom et l'ally du joueur depuis la table universe
+		// On rÃ©cupÃ©re le nom et l'ally du joueur depuis la table universe
 		$tmp=get_user_id($table_spy["position"][$j]);
 		$new_name=$tmp[0];$new_ally=$tmp[1];
 		if(!$new_name) $new_name="?";
 
-		// Si le nom ou l'ally a changé et si l'utilisateur peut le faire
+		// Si le nom ou l'ally a changÃ© et si l'utilisateur peut le faire
 		if( ($user_data['user_id'] == $table_spy['sender_id'][$j]) )
 		if( ($new_ally!=$table_spy["alliance"][$j]) || ($table_spy["joueur"][$j]!=$new_name) ) {
 			$modify_link = "index.php?action=$mod_name&page=$pub_page$viewall&sort=".$pub_sort."&ord=".$pub_ord."&pagenum=".$pub_pagenum."&modify=".$table_spy['id'][$j]."$string_url";
-			$s_action.=" <form method='POST' action='$modify_link' onsubmit=\"return confirm('Etes-vous sûr de vouloir modifier l\'espionnage de ".$table_spy['joueur'][$j]." 	?')\">\n";
+			$s_action.=" <form method='POST' action='$modify_link' onsubmit=\"return confirm('Etes-vous sÃ»r de vouloir modifier l\'espionnage de ".$table_spy['joueur'][$j]." 	?')\">\n";
 			if($new_name!="?")
 				$new_joueur_link = " href=\"index.php?action=search&type_search=player&string_search=".$new_name."&strict=on\" target=\"$target_link\"";
 			else
@@ -269,19 +269,19 @@ function make_spy_OGameStyle($table_spy,$j,$from_popup=0){			// Affiche l'espion
 			else
 				$new_alliance_link ="";
 			$tooltip = "<table width=\"188\"><tr>";
-			$tooltip .= "<td class=\"b\" align=\"center\"><b>Ce joueur a changé!</b></td>";
+			$tooltip .= "<td class=\"b\" align=\"center\"><b>Ce joueur a changÃ©!</b></td>";
 			$tooltip .= "</tr><tr>";
 			$tooltip .= "<td class=\"c\" align=\"center\">Son pseudo: <a$new_joueur_link>$new_name</a></td>";
 			$tooltip .= "</tr><tr>";
 			$tooltip .= "<td class=\"c\" align=\"center\">Son alliance: <a$new_alliance_link>".($new_ally?$new_ally:'<i>(aucune)</i>')."</a></td>";
 			$tooltip .= "</tr><tr>";
-			$tooltip .= "<th align=\"center\"><sup><i><blink><a href=\"$modify_link\">Cliquez pour mettre à jour</blink></i></sup></td>";
+			$tooltip .= "<th align=\"center\"><sup><i><blink><a href=\"$modify_link\">Cliquez pour mettre Ã  jour</blink></i></sup></td>";
 			$tooltip .= "</tr></table>";
 			$tooltip = htmlentities($tooltip);
 			$tooltip = " onmouseover=\"this.T_WIDTH=190;this.T_TEMP=15000;return escape('".$tooltip."')\"";
 
 			// On ajoute une icone au texte Action
-			$s_action.="<a onclick='this.form.submit()' $tooltip><input type='image' width='15' height='15' src='".FOLDER_QMS."/images/modify.png' name = 'Modification de l\'espionnage n°".$table_spy["id"][$j]."'></a>\n</form>";
+			$s_action.="<a onclick='this.form.submit()' $tooltip><input type='image' width='15' height='15' src='".FOLDER_QMS."/images/modify.png' name = 'Modification de l\'espionnage nÂ°".$table_spy["id"][$j]."'></a>\n</form>";
 		}
 	}
 	else 
@@ -296,7 +296,7 @@ function make_spy_OGameStyle($table_spy,$j,$from_popup=0){			// Affiche l'espion
 	$retour.=sprintf($lang['qms_format_spy_content_ogame'],$s_joueur,$s_alliance,$s_position,$s_cible_name,$s_cible,$s_proba)."</th>";
 	$retour.="</tr>\n";
 
-	// Ligne vide pour aérer
+	// Ligne vide pour aÃ©rer
 	echo"<tr><td class='e' colspan='4'>&nbsp</td></tr>\n\n";
 
 	return $retour;

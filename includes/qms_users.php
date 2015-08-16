@@ -2,18 +2,18 @@
 /**
  * qms_users.php 
 
-Procédures et Fonctions liées aux utilisateurs
+ProcÃ©dures et Fonctions liÃ©es aux utilisateurs
 
  * @package QuiMSonde
  * @author Sylar
  * @link http://ogsteam.fr
  * @version : 1.5.1
- * dernière modification : 11.08.08
+ * derniÃ¨re modification : 11.08.08
 
  */
 // L'appel direct est interdit
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
-function get_real_sender_id($position){		// Renvoi le vrai #id du joueur qui s'est fait espionné (dans le cas d'un sitting, c'est pas forcement le même qui est connecté)
+function get_real_sender_id($position){		// Renvoi le vrai #id du joueur qui s'est fait espionnÃ© (dans le cas d'un sitting, c'est pas forcement le mÃªme qui est connectÃ©)
 	global $db;
 	$query_limit = "SELECT  `user_id`  FROM `".TABLE_USER_BUILDING."` WHERE `coordinates` = '".$position."'";
 	$result=$db->sql_query($query_limit);
@@ -59,7 +59,7 @@ function get_user_data_from_coord($key,$value){										// Renvoi le nom de la 
 	list($planet_name)=$db->sql_fetch_row($result);
 	return $planet_name;
 }
-function get_user_name_by_id($id){													// Recupère le nom d'un membre de OGSpy en fonction de son ID
+function get_user_name_by_id($id){													// RecupÃ¨re le nom d'un membre de OGSpy en fonction de son ID
 	global $db,$lang;
 	if($id){
 		$query_limit = "SELECT  `user_name`  FROM `".TABLE_USER."` WHERE `user_id` = ".$id;
@@ -70,7 +70,7 @@ function get_user_name_by_id($id){													// Recupère le nom d'un membre de
 	}else
 		return "-?-";
 }
-function get_user_id_by_name($name){												// Recupère le userid d'un membre de OGSpy en fonction de son nom
+function get_user_id_by_name($name){												// RecupÃ¨re le userid d'un membre de OGSpy en fonction de son nom
 	global $db;
 	if($name){
 		$query_limit = "SELECT  `user_id`  FROM `".TABLE_USER."` WHERE `user_name` = '".$name."'";
@@ -81,7 +81,7 @@ function get_user_id_by_name($name){												// Recupère le userid d'un membr
 	}else
 		return 0;
 }
-function get_user_id($position){					// recupére le nom du joueur et l'alliance d'une certaine position
+function get_user_id($position){					// recupÃ©re le nom du joueur et l'alliance d'une certaine position
 	global $db;	
 	$coord=get_coord($position);
 	$player = "?";	

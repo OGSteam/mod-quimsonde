@@ -2,18 +2,18 @@
 /**
  * qms_sql.php 
 
-Procédures et Fonctions liées aux accès sql
+ProcÃ©dures et Fonctions liÃ©es aux accÃ¨s sql
 
  * @package QuiMSonde
  * @author Sylar
  * @link http://ogsteam.fr
  * @version : 1.5.1
- * dernière modification : 11.08.08
+ * derniÃ¨re modification : 11.08.08
 
  */
 // L'appel direct est interdit
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
-function get_spies($userID,$filtre="",$filtre_data="",$sort="",$ord="",$limit=""){	// Création du tableau d'espionnage
+function get_spies($userID,$filtre="",$filtre_data="",$sort="",$ord="",$limit=""){	// CrÃ©ation du tableau d'espionnage
 	global $db;
 	$sort_list = Array('id', 'sender_id','position','joueur','alliance','distance','cible','datadate','pourcentage');
 	if(!in_Array($sort,$sort_list)) $sort = "datadate";
@@ -50,7 +50,7 @@ function get_spies($userID,$filtre="",$filtre_data="",$sort="",$ord="",$limit=""
 	}
 	return $table_spy;
 }
-function delete_espionnage($index){													// Effacer un espionnage donné
+function delete_espionnage($index){													// Effacer un espionnage donnÃ©
 		global $db;
 		$query = "SELECT  `sender_id`  FROM `".TABLE_QMS."` WHERE `id` = '".$index."'";
 		$result=$db->sql_query($query);
@@ -59,7 +59,7 @@ function delete_espionnage($index){													// Effacer un espionnage donné
 		$db->sql_query($query);
 		return 1;
 }
-function modify_espionnage($index){													// Modifier un espionnage donné
+function modify_espionnage($index){													// Modifier un espionnage donnÃ©
 	global $db,$user_data;
 	static $result;
 	if($index!=0){
@@ -67,7 +67,7 @@ function modify_espionnage($index){													// Modifier un espionnage donné
 		$db->sql_query($query);
 		$nb = $db->sql_numrows($result);
 		if ($nb == 0){	
-			// Non trouvé
+			// Non trouvÃ©
 			return 2;
 		}
 		list($joueur,$alliance,$position)=$db->sql_fetch_row($result);
@@ -87,7 +87,7 @@ function modify_all_espionnage($index_tab){											// Modifier plusieurs espi
 		modify_espionnage($index);
 	return 1;
 }
-function Interpolation($data,$nombre_mini,$periodes){								// Procédure d'interpolation Joueur/Alliance (MERCI SANTORY!!!!!)
+function Interpolation($data,$nombre_mini,$periodes){								// ProcÃ©dure d'interpolation Joueur/Alliance (MERCI SANTORY!!!!!)
 	global $db; global $user_data,$lang;
 	static $tableau;
 	$leave=0;
@@ -249,7 +249,7 @@ function analyse_espionnage($pub_nombre_mini,$pub_periodes){						// Analyse de 
 		$retour .= "<table width='100%'>
 				<tr>
 					<td class='c' align='center'>
-						<b>Planètes Espion</b>
+						<b>PlanÃ¨tes Espion</b>
 					</td>
 					<td class='c' align='center'>
 						<b>Nombre Total</b>

@@ -8,7 +8,7 @@ Page Analyse
  * @author Sylar
  * @link http://ogsteam.fr
  * @version : 1.5.1
- * dernière modification : 11.08.08
+ * derniÃ¨re modification : 11.08.08
 
  */
 // L'appel direct est interdit
@@ -55,7 +55,7 @@ if(!isset($pub_recherche)){
 
 
 }else{
-	// Affichage du Résultat
+	// Affichage du RÃ©sultat
 	if($pub_recherche==$boutonM){
 		if($pub_show_result==$radioP)
 			list($tableau,$titre,$help_txt) = 
