@@ -62,8 +62,8 @@ function get_distance($depart,$arrive){				// Renvoi la distance entre 2 planèt
 	return $dist;
 }
 function prepare_espionnage($pub_espionage){		// Préparer un espionnage à l'importation (MERCI SANTORY!!!!)
-	global $lang;
-	$pub_espionage = mysql_real_escape_string($pub_espionage);
+	global $lang, $bd;
+	$pub_espionage = $db->sql_escape_string($pub_espionage);
 	$pub_espionage = trim($pub_espionage);
 	//Compatibilité UNIX/Windows
 	$pub_espionage = str_replace("\r\n","\n",$pub_espionage);

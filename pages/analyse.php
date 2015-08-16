@@ -15,15 +15,15 @@ Page Analyse
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
 
 // Initialisation des Champs
-global $user_data,$mod_name;
+global $user_data,$mod_name, $db;
 if(!isset($pub_nb_rapport)||($pub_nb_rapport<2)) 
 	$pub_nb_rapport = get_qms_config('nbrapport',$user_data['user_id']); 
 else 
-	$pub_nb_rapport = mysql_real_escape_string(intval($pub_nb_rapport));	
+	$pub_nb_rapport = $db->sql_escape_string(intval($pub_nb_rapport));	
 if(!isset($pub_periodes)) 
 	$pub_periodes = get_qms_config('periode',$user_data['user_id']); 
 else 
-	$pub_periodes =  mysql_real_escape_string(intval($pub_periodes));	
+	$pub_periodes =  $db->sql_escape_string(intval($pub_periodes));	
 $radioJ = $lang['qms_joueurs'];
 $radioA = $lang['qms_alliances'];
 $radioP = $lang['qms_positions'];
