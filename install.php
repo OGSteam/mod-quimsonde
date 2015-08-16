@@ -31,7 +31,7 @@ if ($is_ok == true)
 			{	// Oui, alors on regarde si y'a bien la colonne distance, ajouté à la v1.0 
 				$col_distance = false;
 				$query = $db->sql_query('SHOW COLUMNS FROM '.TABLE_QMS);
-				while ($test = mysql_fetch_assoc($query)) 
+				while ($test = $db->sql_fetch_assoc($query)) 
 				if ($test['Field'] == 'distance') 
 					$col_distance = true;
 				if($col_distance == false)

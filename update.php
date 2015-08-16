@@ -41,7 +41,7 @@ $col_distance = $col_userid = $idx_config_2 = $col_cible_name = $col_position_na
 // Est-ce que la colonne 'cible_name' existe ? (ajouté à la v1.5)
 // Est-ce que la colonne 'position_name' existe ? (ajouté à la v1.5)
 $query = $db->sql_query('SHOW COLUMNS FROM '.TABLE_QMS);
-while ($test = mysql_fetch_assoc($query)) {
+while ($test = $db->sql_fetch_assoc($query)) {
 	if ($test['Field'] == 'distance') $col_distance = true;
 	if ($test['Field'] == 'cible_name') $col_cible_name = true;
 	if ($test['Field'] == 'position_name') $col_position_name = true;
@@ -49,12 +49,12 @@ while ($test = mysql_fetch_assoc($query)) {
 
 // Est-ce que la colonne 'user_id' existe ? (ajouté à la v1.0)
 $query = $db->sql_query('SHOW COLUMNS FROM '.TABLE_QMS_config);
-while ($test = mysql_fetch_assoc($query)) 
+while ($test = $db->sql_fetch_assoc($query)) 
 	if ($test['Field'] == 'user_id') $col_userid = true;
 
 // Est-ce que l'index 'config_2' existe ? (ajouté à la v1.0)
 $query = $db->sql_query('SHOW INDEX FROM '.TABLE_QMS_config);
-while ($test = mysql_fetch_assoc($query)) 
+while ($test = $db->sql_fetch_assoc($query)) 
 	if ($test['Key_name'] == 'config_2') $idx_config_2 = true;
 
 if (!$col_distance) {  
