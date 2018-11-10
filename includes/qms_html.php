@@ -285,7 +285,7 @@ function make_spy_OGameStyle($table_spy,$j,$from_popup=0){			// Affiche l'espion
 		}
 	}
 	else 
-	*/	$s_action = "&nbsp";
+	*/	$s_action = "&nbsp;";
 	// Texte de l'espionnage
 	$retour = "<tr>";
 	$retour.="<td class='e' align='center' valign='center' rowspan='2'>$s_action</td><td class='c'>$s_date</td>";
@@ -297,7 +297,7 @@ function make_spy_OGameStyle($table_spy,$j,$from_popup=0){			// Affiche l'espion
 	$retour.="</tr>\n";
 
 	// Ligne vide pour aérer
-	echo"<tr><td class='e' colspan='4'>&nbsp</td></tr>\n\n";
+	echo"<tr><td class='e' colspan='4'>&nbsp;</td></tr>\n\n";
 
 	return $retour;
 }
