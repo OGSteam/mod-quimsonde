@@ -14,7 +14,7 @@ Liste des chaines et regex pour la langue Française.
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
 
 // Jours de la semaine
-$day_array = Array ('1'=>'Lundi','2'=>'Mardi','3'=>'Mercredi','4'=>'Jeudi','5'=>'Vendredi','6'=>'Samedi','0'=>'Dimanche');
+$day_array = Array ('1'=>'Lundi','2'=>'Mardi','3'=>'Mercredi','4'=>'Jeudi','5'=>'Vendredi','6'=>'Samedi','7'=>'Total','0'=>'Dimanche');
 
 // Variable (pour les helps)
 $h_rapport = isset($pub_nb_rapport)?$pub_nb_rapport:0;
@@ -339,7 +339,7 @@ $lang['qms_spylist_check_aucun'] = "Aucun";
 $lang['qms_spylist_check_inverser'] = "Inverser";
 $lang['qms_spylist_check_modifies'] = "Les modifiés";
 $lang['qms_spylist_check_inconnus'] = "les &quot?&quot";
-$lang['qms_spylist_check_on_selection'] = "sur la sélection...&nbsp";
+$lang['qms_spylist_check_on_selection'] = "sur la sélection...&nbsp;";
 $lang['qms_spylist_check_on_selection_suppr'] = "Supprimer";
 $lang['qms_spylist_check_on_selection_update'] = "Mettre à jour";
 $lang['qms_spylist_page_on_page'] = "Page %d sur %d";
@@ -593,6 +593,6 @@ $lang['qms_footer'] =
 	"<div align=\"right\"><font size=\"2\">%1\$s v%2\$s by <a href='mailto:sylar.web@free.fr'>Sylar</a> <s>©</s> 2008</font><br/>\n".
 	"<font size=\"1\">Mod de Gestion des Espionnages subits<br />".
 	"<a href='index.php?action=%1\$s&page=changelog'>ChangeLog</a> / ".
-	"<a href='http://board.ogsteam.fr/viewtopic.php?id=4816' target='_blank'>plus d'infos</a></font><br/></div>\n";
+	"<a href='https://forum.ogsteam.fr/index.php?topic=817.0' target='_blank'>plus d'infos</a></font><br/></div>\n";
 
 ?>
