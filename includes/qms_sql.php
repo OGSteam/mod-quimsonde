@@ -461,7 +461,7 @@ function analyse_globale($periodes,$nb_rapport,$JorA){								// Analyse des esp
 						$tooltip="";//get_tooltip_spy($name,$sender_list[$j],$datadate,$JorA);
 						$retour .= "<th><a $tooltip><b>".$count_spy[$name][$s_id]."</b></a></th>\n";
 					}else
-						$retour .= "<th>&nbsp</th>\n";
+						$retour .= "<th>&nbsp;</th>\n";
 				}
 				$retour .= "</tr>\n";
 			}else
@@ -478,7 +478,7 @@ function analyse_globale($periodes,$nb_rapport,$JorA){								// Analyse des esp
 				$tooltip="";//get_tooltip_spy("?",$sender_list[$j],$datadate,$JorA);
 				$retour .= "<th><a $tooltip><b>".$count_spy[$lastone][$s_id]."</b></a></th>\n";
 			}else
-				$retour .= "<th>&nbsp</th>\n";
+				$retour .= "<th>&nbsp;</th>\n";
 		}
 		$retour .= "</tr>\n";
 	}
