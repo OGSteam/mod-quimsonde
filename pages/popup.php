@@ -7,8 +7,8 @@ Affiche un espionnage en détail
  * @package QuiMSonde
  * @author Sylar
  * @link http://ogsteam.fr
- * @version : 1.5.1
- * dernière modification : 11.08.08
+ * @version : 1.5.2
+ * dernière modification : 10.11.2018
 
  */
 // On récupére les données
