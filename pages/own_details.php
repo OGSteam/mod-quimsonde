@@ -402,7 +402,7 @@ function draw_textbox_for_bbcode($id,$titre,$bbcode){
 
 // Création du BBCode pour les statistiques 
 function remove_html($text){
-	return ereg_replace("<[^>]*>","",$text);
+	return preg_replace("#<[^>]*>#","",$text);
 }
 function get_bbcode_footer(){
 	global $version,$lang;

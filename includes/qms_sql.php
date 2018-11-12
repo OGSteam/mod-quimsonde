@@ -486,7 +486,7 @@ function analyse_globale($periodes,$nb_rapport,$JorA){								// Analyse des esp
 	return $retour;
 }
 function get_spies_string($position,$texte="<color=red>E</color>"){					// Renvoi le lien vers le popup qui affiche les espionnages fait sur cette planete
-	global $db;
+	global $db,$result_2;
 	list($galaxy,$system,$row)=get_coord($position);
 	$report_spy = 0;
 	$request = "select id_spy from ".TABLE_PARSEDSPY." where active = '1' and coordinates = '$galaxy:$system:$row'";
