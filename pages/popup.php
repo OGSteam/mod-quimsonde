@@ -7,8 +7,8 @@ Affiche un espionnage en détail
  * @package QuiMSonde
  * @author Sylar
  * @link http://ogsteam.fr
- * @version : 1.5.1
- * dernière modification : 11.08.08
+ * @version : 1.5.2
+ * dernière modification : 10.11.2018
 
  */
 // On récupére les données
@@ -103,9 +103,9 @@ echo"</td><td width=\"33%\" align=\"center\">";
 // On affiche les cibles
 // On recupére les favorites
 $cible_most=get_most('cible',$table_spy);
-$cible_str1=isset($cible_most['data'][0])?"<a>".$cible_most['data'][0]."</a> <sup>".$cible_most['cnt'][0]."</sup>":"&nbsp";
-$cible_str2=isset($cible_most['data'][1])?"<a>".$cible_most['data'][1]."</a> <sup>".$cible_most['cnt'][1]."</sup>":"&nbsp";
-$cible_str3=isset($cible_most['data'][2])?"<a>".$cible_most['data'][2]."</a> <sup>".$cible_most['cnt'][2]."</sup>":"&nbsp";
+$cible_str1=isset($cible_most['data'][0])?"<a>".$cible_most['data'][0]."</a> <sup>".$cible_most['cnt'][0]."</sup>":"&nbsp;";
+$cible_str2=isset($cible_most['data'][1])?"<a>".$cible_most['data'][1]."</a> <sup>".$cible_most['cnt'][1]."</sup>":"&nbsp;";
+$cible_str3=isset($cible_most['data'][2])?"<a>".$cible_most['data'][2]."</a> <sup>".$cible_most['cnt'][2]."</sup>":"&nbsp;";
 $nb_cible_lst = get_list("cible",$private,"`joueur` = '".$table_spy['joueur'][0]."'");
 $nb_cible = count($nb_cible_lst);
 
@@ -131,9 +131,9 @@ echo"</td><td width=\"33%\" align=\"center\">";
 // On affiche les positions
 // On recupére les favorites
 $cible_most=get_most('position',$table_spy);
-$pos_str1=isset($cible_most['data'][0])?"<a>".$cible_most['data'][0]."</a> <sup>".$cible_most['cnt'][0]."</sup>":"&nbsp";
-$pos_str2=isset($cible_most['data'][1])?"<a>".$cible_most['data'][1]."</a> <sup>".$cible_most['cnt'][1]."</sup>":"&nbsp";
-$pos_str3=isset($cible_most['data'][2])?"<a>".$cible_most['data'][2]."</a> <sup>".$cible_most['cnt'][2]."</sup>":"&nbsp";
+$pos_str1=isset($cible_most['data'][0])?"<a>".$cible_most['data'][0]."</a> <sup>".$cible_most['cnt'][0]."</sup>":"&nbsp;";
+$pos_str2=isset($cible_most['data'][1])?"<a>".$cible_most['data'][1]."</a> <sup>".$cible_most['cnt'][1]."</sup>":"&nbsp;";
+$pos_str3=isset($cible_most['data'][2])?"<a>".$cible_most['data'][2]."</a> <sup>".$cible_most['cnt'][2]."</sup>":"&nbsp;";
 $nb_pos_lst = get_list("position",$private,"`joueur` = '".$table_spy['joueur'][0]."'");
 $nb_pos = count($nb_pos_lst);
 
@@ -276,8 +276,8 @@ function get_top_hour($tableau,$titre=""){
 
 	// Création de la table
 	for($i=0;$i<24;$i++){
-		for($j=0;$j<7;$j++) ${'case'.$j} = "<th>&nbsp</th>";
-		$case7 = "<td class=\"c\">&nbsp</td>";
+		for($j=0;$j<7;$j++) ${'case'.$j} = "<th>&nbsp;</th>";
+		$case7 = "<td class=\"c\">&nbsp;</td>";
 		$total=0;
 		if(isset($tab[$i])){
 			foreach($tab[$i] as $k_day => $t_day){
@@ -295,14 +295,15 @@ function get_top_hour($tableau,$titre=""){
 				${'case'.$k_day} .= "<font color=\"".get_color($t_day['cnt'],$lemoins[0],$leplus[0])."\">".$t_day['cnt']."</font></a></th>";
 			}
 		}
-		if(isset($total_hour_[$i])&&$total_hour_[$i]>0) 
-			$case7="<td class=\"c\"><font color=\"".get_color($total_hour_[$i],$totalH_min,$totalH_max)."\">".$total_hour_[$i]."</font></td>";
+		if(isset($total_hour_[$i])&&$total_hour_[$i]>0) { 
+			$case7="<td class=\"c\" align=\"center\"><font color=\"".get_color($total_hour_[$i],$totalH_min,$totalH_max)."\">".$total_hour_[$i]."</font></td>";
+		}
 		for($j=0;$j<8;$j++) ${'ligne'.$j} .= ${'case'.$j};
 	}
 
 	// Finalisation : affichage de la derniere colonne.
 	for($j=0;$j<7;$j++) 
-		${'ligne'.$j} = "<td class=\"c\">".$day_array[$j]."</td>".${'ligne'.$j}."<td class=\"c\">".(isset($total_jour_[$j])?"<font color=\"".($j!=7?get_color($total_jour_[$j],$totalJ_min,$totalJ_max):'#FFFFFF')."\">".$total_jour_[$j]."</font>":"&nbsp")."</td>";
+		${'ligne'.$j} = "<td class=\"c\">".$day_array[$j]."</td>".${'ligne'.$j}."<td class=\"c\">".(isset($total_jour_[$j])?"<font color=\"".($j!=7?get_color($total_jour_[$j],$totalJ_min,$totalJ_max):'#FFFFFF')."\">".$total_jour_[$j]."</font>":"&nbsp;")."</td>";
 
 	// Retour du code de la table
 	$retour = "<table><tr><td class='c' colspan='26'>$titre</td><tr>$ligne</tr>";

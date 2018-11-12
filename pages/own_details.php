@@ -504,7 +504,7 @@ function draw_tooltip_for_bbcode_global($id_list,$titre_list){
 	$code .= "<input type=\"text\" id=\"bb_color4\" name=\"bb_color4\" $styl value=\"".$data[10]."\" onchange=\"update_bbcode()\"><br/>";
 	$code .= "<br/><input type=\"submit\" name=\"bb_valid\" value=\"".$lang['qms_details_form_save']."\"></form><br/>";
 	$code .= "</td></tr><tr><th height=\"100%\" style=\"background-color:#FFFFFF\">";
-	$code .= "<div id=\"apercu_div\" style=\"text-align:left; height:150px; width=380px; overflow:scroll; color:#FFFFFF; background-color:#000000;\">&nbsp</div>";
+	$code .= "<div id=\"apercu_div\" style=\"text-align:left; height:150px; width=380px; overflow:scroll; color:#FFFFFF; background-color:#000000;\">&nbsp;</div>";
 	$code .= "</th></tr><tr><td class=\"b\" align=\"center\" colspan=\"2\">";
 	$code .= "<input type=\"submit\" onclick=\"document.getElementById('bb_div').style.visibility = 'hidden';\" value=\"Cacher...\">";
 	$code .= "</td></tr></table>";
