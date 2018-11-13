@@ -48,7 +48,7 @@ echo"</form><br/>\n";
 // On récupére les espionnages de ce joueur sur la cible choisi
 $table_spy = get_spies($private?$user_data['user_id']:0,'joueur',$table_spy['joueur'][0]);
 
-// S'il y a au moins 2 espionnages, Affichage du graphique des horraires
+// S'il y a au moins 2 espionnages, Affichage du graphique des horaires
 $titre=($private?sprintf($lang['qms_popup_analyse_on'],get_user_name_by_id($table_spy['sender_id'][0])):$lang['qms_popup_analyse_everyone']);
 if(count($table_spy['joueur'])>1){
 	echo get_top_hour($table_spy,$titre)."\n";
@@ -101,7 +101,7 @@ echo"</table>\n";
 echo"</td><td width=\"33%\" align=\"center\">";
 
 // On affiche les cibles
-// On recupére les favorites
+// On récupère les favorites
 $cible_most=get_most('cible',$table_spy);
 $cible_str1=isset($cible_most['data'][0])?"<a>".$cible_most['data'][0]."</a> <sup>".$cible_most['cnt'][0]."</sup>":"&nbsp;";
 $cible_str2=isset($cible_most['data'][1])?"<a>".$cible_most['data'][1]."</a> <sup>".$cible_most['cnt'][1]."</sup>":"&nbsp;";
@@ -302,7 +302,7 @@ function get_top_hour($tableau,$titre=""){
 	}
 
 	// Finalisation : affichage de la derniere colonne.
-	for($j=0;$j<7;$j++) 
+	for($j=0;$j<8;$j++) 
 		${'ligne'.$j} = "<td class=\"c\">".$day_array[$j]."</td>".${'ligne'.$j}."<td class=\"c\">".(isset($total_jour_[$j])?"<font color=\"".($j!=7?get_color($total_jour_[$j],$totalJ_min,$totalJ_max):'#FFFFFF')."\">".$total_jour_[$j]."</font>":"&nbsp;")."</td>";
 
 	// Retour du code de la table
