@@ -40,13 +40,13 @@ foreach($config_list as $config){
 			echo"\t</tr>";
 		}
 	}else{
-		echo"\t<tr>\n\t\t<td class='c'>".$config['titre']."</td>\n\t\t<td class='d'>&nbsp<td>\n\t</tr>\n";
+		echo"\t<tr>\n\t\t<td class='c'>".$config['titre']."</td>\n\t\t<td class='d'>&nbsp;<td>\n\t</tr>\n";
 	}
 }
 ?>
 </table>
 <center>
-<input name='valider_user' type='submit' value='<?php echo $lang['qms_admin_config_submit']; ?>'/>&nbsp
+<input name='valider_user' type='submit' value='<?php echo $lang['qms_admin_config_submit']; ?>'/>&nbsp;
 <input name='restore_user' type='submit' value='<?php echo $lang['qms_admin_config_restore']; ?>'/>
 </center>
 </form>

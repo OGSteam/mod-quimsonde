@@ -112,8 +112,8 @@ if($max_spy>0){
 	if($stop>$max_spy) $stop=$max_spy;
 
 	// 1ere ligne
-	$entete_tableau = Array (			Array ( 'class'=>'d',	'sort' => '',					'label' => '&nbsp',		'width' => '20' ),
-												Array ( 'class'=>'d',	'sort' => '',					'label' => '&nbsp',		'width' => '10' ),
+	$entete_tableau = Array (			Array ( 'class'=>'d',	'sort' => '',					'label' => '&nbsp;',		'width' => '20' ),
+												Array ( 'class'=>'d',	'sort' => '',					'label' => '&nbsp;',		'width' => '10' ),
 												Array ( 'class'=>'c',	'sort' => 'datadate',		'label' => $lang['qms_date'],		'width' => '140' ),
 												Array ( 'class'=>'c',	'sort' => 'position',			'label' => $lang['qms_depart'],	'width' => '80' ),
 												Array ( 'class'=>'c',	'sort' => 'joueur',			'label' => $lang['qms_joueur'],	'width' => '180' ),
@@ -208,9 +208,9 @@ if($max_spy>0){
 			$out_modify = "<a href='$modify_link' onclick=\"$confirm\" $tooltip>$img</a>";
 		} 
 		else  // Pas d'icone pour modifier
-			$out_modify = "&nbsp";
+			$out_modify = "&nbsp;";
 		if($private||($user_data['user_id']==$table_spy['sender_id'][$j])/*||IsUserAdmin()*/)
-			$out_checkbox="<input type='checkbox' value='".$table_spy['id'][$j]."' name='check_".$j."' id='check_".$j."' inconnu='$player_unknown' modifier='".($out_modify=="&nbsp"?'0':'1')."'>";
+			$out_checkbox="<input type='checkbox' value='".$table_spy['id'][$j]."' name='check_".$j."' id='check_".$j."' inconnu='$player_unknown' modifier='".($out_modify=="&nbsp;"?'0':'1')."'>";
 		else
 			$out_checkbox="";
 		//-------------INFO
@@ -245,14 +245,14 @@ if($max_spy>0){
 	}
 	?>
 	<tr>
-		<td class='d'>&nbsp</td>
+		<td class='d'>&nbsp;</td>
 		<td class='d' colspan='8'>
 			<img src='<?php echo FOLDER_QMS; ?>/images/arrow_ltr.png'>
 			<a href="Javascript:void(0)" onClick="GereChkbox('spy_list','1');"><?php echo $lang['qms_spylist_check_tout']; ?></a> / 
 			<a href="Javascript:void(0)" onClick="GereChkbox('spy_list','0');"><?php echo $lang['qms_spylist_check_aucun']; ?></a> / 
 			<a href="Javascript:void(0)" onClick="GereChkbox('spy_list','2');"><?php echo $lang['qms_spylist_check_inverser']; ?></a> / 
 			<a href="Javascript:void(0)" onClick="GereChkbox('spy_list','3');"><?php echo $lang['qms_spylist_check_modifies']; ?></a> / 
-			<a href="Javascript:void(0)" onClick="GereChkbox('spy_list','4');"><?php echo $lang['qms_spylist_check_inconnus']; ?></a>&nbsp
+			<a href="Javascript:void(0)" onClick="GereChkbox('spy_list','4');"><?php echo $lang['qms_spylist_check_inconnus']; ?></a>&nbsp;
 			<img src='<?php echo FOLDER_QMS; ?>/images/ligne.png'>
 			<input type='hidden' value='<?php echo $start; ?>' name='start'>
 			<input type='hidden' value='<?php echo $stop; ?>' name='stop'>

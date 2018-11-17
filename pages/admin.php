@@ -115,7 +115,7 @@ global $db,$user_data,$config_list;
 					</td>
 				</tr>
 				<tr>
-					<th width='10%'>&nbsp</th>
+					<th width='10%'>&nbsp;</th>
 					<th width='20%'><?php echo $lang['qms_admin_search_nom'].help('qms_search_nom'); ?></th>
 					<th width='40%'><?php echo $lang['qms_admin_search_link'].help('qms_search_link'); ?></th>
 					<th width='20%'><?php echo $lang['qms_admin_search_type'].help('qms_search_type'); ?></th>
