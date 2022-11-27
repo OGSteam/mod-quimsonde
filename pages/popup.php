@@ -1,9 +1,6 @@
 <?php
 /**
- * popup.php 
-
-Affiche un espionnage en détail
-
+ * popup.php
  * @package QuiMSonde
  * @author Sylar
  * @link http://ogsteam.fr
@@ -63,7 +60,7 @@ if(count($table_spy['joueur'])>1){
 // On recupére les stats
 $distance_moy = get_distance_moyen($table_spy);
 $pourcent_moy = get_pourcentage_moyen($table_spy);
-	
+
 // Recherche de la distance la plus grande
 $tmp=0;
 for($i=0;$i<count($table_spy['distance']);$i++)
@@ -159,7 +156,7 @@ echo"</td></tr></table>\n";
 // Script D'exportation
 
 // Définition des variables
-if(isset($pub_save_cfg)) 
+if(isset($pub_save_cfg))
 	set_qms_config("$pub_color_spy|$pub_color_cbl|".($pub_export_tab?"1":"0")."|".($pub_export_links?"1":"0"),'bbc_pup',$user_data['user_id']);
 
 $link = " onchange='update_bbcode()'";
@@ -181,9 +178,9 @@ echo"</td></tr>";
 // Zone BBCode ou HTML
 $data=$tag="<>";			// 0 - 1
 if(isset($_SERVER['HTTP_HOST']))
-	$hote = "http://".$_SERVER['HTTP_HOST'];
+	$hote = "https://".$_SERVER['HTTP_HOST'];
 else
-	$hote = "http://".$HTTP_HOST;
+	$hote = "https://".$HTTP_HOST;
 if(isset($_SERVER['PHP_SELF'])){
 	$temp_phpself = $_SERVER['PHP_SELF'];
 	$hote .= $temp_phpself;
@@ -210,15 +207,15 @@ $data.=$tag.$link_alliance = str_replace(" ","%20",$link_alliance);			// 15
 $data.=$tag.$link_position = "$hote?action=galaxy&galaxy=".get_galaxy_link($table_spy["position"][0]);			// 16
 $data.=$tag.$link_cible = "$hote?action=galaxy&galaxy=".get_galaxy_link($table_spy["cible"][0]);			// 17
 echo"<tr><td class=\"c\" align=\"center\">\n";
-echo"<textarea rows='10' id='texte'>"; 
+echo"<textarea rows='10' id='texte'>";
 echo"</textarea>\n";
 echo"</td></tr></table>";
 echo"<input type=\"text\" id=\"data\" value=\"$data\" style=\"visibility:hidden;\">";
-echo"<textarea rows='10' id='texte_brut' style=\"visibility:hidden; position:fixed\">"; 
+echo"<textarea rows='10' id='texte_brut' style=\"visibility:hidden; position:fixed\">";
 echo"{tab_start}\n";
 echo"{tr}{th}{chaine_date}{/th}{th}Contrôle aérospatial{/th}{th}[color=#ff9933]Activité d'espionnage[/color]{/th}{/tr}\n";
 echo $lang['qms_popup_bbcode_1'];
-if($chaine_alliance!="") 
+if($chaine_alliance!="")
 	echo $lang['qms_popup_bbcode_2'];
 echo $lang['qms_popup_bbcode_3'];
 echo"</textarea>\n";
@@ -230,7 +227,7 @@ echo "</center></fieldset>\n";
 function get_top_hour($tableau,$titre=""){
 	global $mod_name,$image_graph,$day_array,$lang;
 	$value=$legend=$ligne=$ligne0=$ligne1=$ligne2=$ligne3=$ligne4=$ligne5=$ligne6=$ligne7="";
-	$hit0=9999; 
+	$hit0=9999;
 	$hit1=$lemoins=$leplus=$total0=$total1=$total2=$total3=$total4=$total5=$total6=$total7=0;
 
 	// initialisation du tableau et création 1ere ligne : les 24 heures et le total
@@ -241,7 +238,7 @@ function get_top_hour($tableau,$titre=""){
 	$ligne .= "<td class=\"c\">".$lang['qms_total']."</td>";
 
 	// Création du tableau
-	foreach($tableau['datadate'] as $id => $newdate){ 
+	foreach($tableau['datadate'] as $id => $newdate){
 		$hour=date("G",$newdate);
 		$day=date("w",$newdate);
 		if(!isset($tab[$hour][$day]['cnt'])){
@@ -295,14 +292,14 @@ function get_top_hour($tableau,$titre=""){
 				${'case'.$k_day} .= "<font color=\"".get_color($t_day['cnt'],$lemoins[0],$leplus[0])."\">".$t_day['cnt']."</font></a></th>";
 			}
 		}
-		if(isset($total_hour_[$i])&&$total_hour_[$i]>0) { 
+		if(isset($total_hour_[$i])&&$total_hour_[$i]>0) {
 			$case7="<td class=\"c\" align=\"center\"><font color=\"".get_color($total_hour_[$i],$totalH_min,$totalH_max)."\">".$total_hour_[$i]."</font></td>";
 		}
 		for($j=0;$j<8;$j++) ${'ligne'.$j} .= ${'case'.$j};
 	}
 
 	// Finalisation : affichage de la derniere colonne.
-	for($j=0;$j<8;$j++) 
+	for($j=0;$j<8;$j++)
 		${'ligne'.$j} = "<td class=\"c\">".$day_array[$j]."</td>".${'ligne'.$j}."<td class=\"c\">".(isset($total_jour_[$j])?"<font color=\"".($j!=7?get_color($total_jour_[$j],$totalJ_min,$totalJ_max):'#FFFFFF')."\">".$total_jour_[$j]."</font>":"&nbsp;")."</td>";
 
 	// Retour du code de la table
