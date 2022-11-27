@@ -1,6 +1,6 @@
 <?php
 /**
- * qms_sql.php 
+ * qms_sql.php
 
 Procédures et Fonctions liées aux accès sql
 
@@ -13,31 +13,35 @@ Procédures et Fonctions liées aux accès sql
  */
 // L'appel direct est interdit
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
-function get_spies($userID,$filtre="",$filtre_data="",$sort="",$ord="",$limit=""){	// Création du tableau d'espionnage
+
+function get_spies ($userID, $filtre="", $filtre_data="", $sort="", $ord="", $limit="") {
 	global $db;
-	$sort_list = Array('id', 'sender_id','position','joueur','alliance','distance','cible','datadate','pourcentage');
-	if(!in_Array($sort,$sort_list)) $sort = "datadate";
-	$ord_list = Array('desc' , 'asc' );
-	if(!in_Array($ord,$ord_list)) $ord = "desc";
-	if($userID==0&&$filtre=='cible'&&count($test = explode('>',$filtre_data))>1)
-		list($userID,$filtre,$filtre_data) = Array(get_user_id_by_name(trim($test[1])),"","");
+	$sort_list = array('id', 'sender_id','position','joueur','alliance','distance','cible','datadate','pourcentage');
+	if (!in_Array($sort, $sort_list)) $sort = "datadate";
+	$ord_list = array('desc' , 'asc');
+	if (!in_Array($ord,$ord_list)) $ord = "desc";
+	if ($userID==0 && $filtre=='cible' && count($test = explode('>', $filtre_data))>1) {
+		list($userID,$filtre,$filtre_data) = array(get_user_id_by_name(trim($test[1])),"","");
+    }
 	$s_where = "WHERE `sender_id` ".($userID==0?"<>":"=")." '$userID'";
 	$s_where .= ($filtre!=""?" AND ".($filtre_data!=""?"`$filtre`='$filtre_data'":"$filtre"):"");
+
 	$query_limit = "SELECT  `id`, `sender_id` , `position` , `position_name` ,  `joueur` , `alliance` , `distance` , `cible` , `cible_name` , `datadate` ,  `pourcentage` ";
 	$query_limit .= "FROM `".TABLE_QMS."` $s_where ORDER BY `$sort` $ord $limit";
 	qms_debug("get_spies : ".$query_limit);
 	$result=$db->sql_query($query_limit);
-	if($result=$db->sql_numrows($result)==0){
-		$max_spy=0;
-		$table_spy=false;
-	}else{
+
+    if($result=$db->sql_numrows($result) == 0) {
+		$max_spy = 0;
+		$table_spy = null;
+	}else {
 		$i = 0;
 		while(list($id, $sender_id, $position, $position_name, $joueur, $alliance, $distance, $cible, $cible_name, $datadate, $pourcentage)=$db->sql_fetch_row($result)){
 			$table_spy['id'][$i] = $id;
 			$table_spy['sender_id'][$i] = $sender_id;
 			$table_spy['position'][$i]	= $position;
 			$table_spy['position_name'][$i]	= $position_name;
-			$table_spy['joueur'][$i]	= $joueur; 
+			$table_spy['joueur'][$i]	= $joueur;
 			$table_spy['alliance'][$i]	= $alliance;
 			$table_spy['distance'][$i] = $distance;
 			$table_spy['cible'][$i]	= $cible;
@@ -66,7 +70,7 @@ function modify_espionnage($index){													// Modifier un espionnage donné
 		$query = "SELECT joueur, alliance, position FROM ".TABLE_QMS." WHERE `id`='$index' LIMIT 1";
 		$db->sql_query($query);
 		$nb = $db->sql_numrows($result);
-		if ($nb == 0){	
+		if ($nb == 0){
 			// Non trouvé
 			return 2;
 		}
@@ -210,7 +214,7 @@ function Interpolation($data,$nombre_mini,$periodes){								// Procédure d'int
 			 			$flux .= "<th>&nbsp;</th>\n";
 					}
 				}
-				$flux .= "</tr>\n";	
+				$flux .= "</tr>\n";
  			}
 		}
 		$retour .= $flux;
@@ -266,7 +270,7 @@ function analyse_espionnage($pub_nombre_mini,$pub_periodes){						// Analyse de 
 				$cible_init = $cible;
 				$info[$position]['total']=1;
 				$info[$position][$cible]['date']=date($lang['qms_format_full'], $datadate)." ( ".$pourcentage."% )";
-				$info[$position][$cible]['num']=1;      
+				$info[$position][$cible]['num']=1;
 			}elseif($cible!=$cible_init){
 				$cible_init = $cible;
 				$info[$position]['total']+=1;
@@ -301,7 +305,7 @@ function analyse_espionnage($pub_nombre_mini,$pub_periodes){						// Analyse de 
 					$flux .= "<th>&nbsp;</th>\n";
 				}
 			}
-			$flux .= "</tr>\n";   	
+			$flux .= "</tr>\n";
 		}
 		$retour .= $flux;
 		$retour .= "</table>\n";

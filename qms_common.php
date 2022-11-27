@@ -1,6 +1,6 @@
 <?php
 /**
- * common.php 
+ * common.php
 
 Variables communes
 
@@ -14,9 +14,9 @@ Variables communes
 // L'appel direct est interdit
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
 
-/*/ Mode débug
-define( "QMS_DEBUG", 0 );
-error_reporting(E_ALL);//*/
+// Mode débug
+//define("QMS_DEBUG", 1 );
+//error_reporting(E_ALL);
 
 // Nom des tables
 global $table_prefix;
@@ -24,14 +24,14 @@ define("TABLE_QMS", $table_prefix."QuiMeSonde");
 define("TABLE_QMS_config", $table_prefix."QuiMeSonde_config");
 
 // Nom des Dossiers
-define("FOLDER_QMS","mod/quimsonde");
-define("FOLDER_INCLUDE","mod/quimsonde/includes");
-define("FOLDER_LANG","mod/quimsonde/lang");
+define("FOLDER_QMS", "mod/quimsonde");
+define("FOLDER_INCLUDE", "mod/quimsonde/includes");
+define("FOLDER_LANG", "mod/quimsonde/lang");
 
 
-// Variables Globales 
+// Variables Globales
 $mod_name = "QuiMSonde";
-// Chemin des images 
+// Chemin des images
 $image_logo = FOLDER_QMS."/images/logo.gif";
 $image_bbcode = FOLDER_QMS."/images/bbcode.gif";
 $image_graph = FOLDER_QMS."/images/graph.gif";

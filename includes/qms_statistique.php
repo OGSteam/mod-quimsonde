@@ -1,9 +1,6 @@
 <?php
 /**
- * qms_statistique.php 
-
-Procédures et Fonctions liées aux statistiques
-
+ * qms_statistique.php
  * @package QuiMSonde
  * @author Sylar
  * @link http://ogsteam.fr
@@ -60,25 +57,30 @@ function get_list($type,$private,$filtre_where=""){								// Renvoi la liste de
 	}
 	return $tab;
 }
-function get_most($data,$tableau){												//Renvoi de la valeur et le nombre de $data le plus trouvé
-	static $top1,$cnt1,$top2,$cnt2,$top3,$cnt3;
-	$max_spy=count($tableau[$data]);
+function get_most($data, $tableau) {										//Renvoi de la valeur et le nombre de $data le plus trouvé
+	static $top1, $cnt1, $top2, $cnt2, $top3, $cnt3;
+    if (isset($tableau)) {
+	$max_spy = count($tableau[$data]);
+    } else {
+        $max_spy = 0;
+    }
 	$i=0;
 	// On defile tous les champ du tableau
-	for($a=0;$a<$max_spy;$a++){
+	for ($a=0; $a<$max_spy; $a++) {
 		// On recupére le champ de la donnée $data
 		$cible=$tableau[$data][$a];
 		// Si l'on a une donnée
-		if($cible){
+		if ($cible) {
 			$ok=0;
 			// On regarde dans le tableau $tmp si elle y est deja
-			for($j=0;$j<$i;$j++)	
-				if($tmp['data'][$j]==$cible){
+			for ($j=0; $j<$i; $j++) {
+				if ($tmp['data'][$j]==$cible) {
 					// Si oui, on incrémente le compte
 					$tmp['cnt'][$j]+=1;
 					$ok=1;
 				}
-			if(!$ok){
+            }
+			if (!$ok) {
 				// Si non, on ajoute la donnée a la fin du tableau $tmp,
 				$tmp['data'][$i]=$cible;
 				// Et avec un count à 1.
@@ -86,14 +88,14 @@ function get_most($data,$tableau){												//Renvoi de la valeur et le nombre
 				$i+=1;
 			}
 		}
-	}	
+	}
 	if(isset($tmp)) {
 		array_multisort($tmp['cnt'], SORT_DESC, SORT_NUMERIC, $tmp['data'], SORT_ASC);
 		return $tmp;//array($top1,$cnt1,$top2,$cnt2,$top3,$cnt3);
 	}else
 		return false;
 }
-function get_list_order($tableau,$sort="",$ord=""){								// Classer le tableau en fonction d'une donnée ($sort) et d'un sens ($ord)
+function get_list_order($tableau,$sort="",$ord=""){	//Classer le tableau en fonction d'une donnée ($sort) et d'un sens ($ord)
 	if(($sort=='')||($sort=='date')) $sort='datadate';
 	if($ord=='') $ord='desc';
 	$max_spy=count($tableau[$sort]);
@@ -151,7 +153,7 @@ function get_pourcentage_moyen($tableau){										// Renvoi le pourcentage de d
 	return $retour;
 }
 function get_time_analyse($tableau){											// Renvoi la période sans espionnage la plus longue
-// retour : 
+// retour :
 // [0] : Période tranquille la plus longue
 // [1] : tag de <a> pour popup sur la période la plus tranquille (qui donne les 3 plus longues période)
 // [2] : Temps depuis lequel il n'y a pas eu d'espionnage
@@ -165,7 +167,7 @@ function get_time_analyse($tableau){											// Renvoi la période sans espion
 	$moyenne = 0;
 	if(count($tableau['id'])>1){
 	//	$tab=get_list_order($tableau);
-	//	foreach($tab as $i){ 
+	//	foreach($tab as $i){
 		for($i=0;$i<count($tableau['id']);$i++){
 			$now=$tableau['datadate'][$i];
 			$diff = $prev-$now;

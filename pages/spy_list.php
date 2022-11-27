@@ -1,9 +1,6 @@
 <?php
 /**
- * spy_list.php 
-
-Affiche la liste des espionnages
-
+ * spy_list.php
  * @package QuiMSonde
  * @author Sylar
  * @link http://ogsteam.fr
@@ -59,7 +56,7 @@ $table_spy=get_spies(
 	isset($pub_ord)?$pub_ord:"",
 	" LIMIT ".$start.", ".$pages_lgs
 );
-qms_debug("count(table_spy) : ".count($table_spy['id']));
+//qms_debug("count(table_spy) : ".count($table_spy['id']));
 
 // Nombre de pages totales
 $max_page = ceil($max_spy/$pages_lgs);
@@ -103,7 +100,7 @@ $string_url = "index.php?action=$mod_name&page=$pub_page".($private?'':'&viewall
 
 <?php
 // Affichage du tableau de listage
-if($max_spy>0){  
+if($max_spy>0){
 
 	if(count($table_spy['id'])>50) make_changepage_table($pub_pagenum,$max_page,$string_url);
 
@@ -206,7 +203,7 @@ if($max_spy>0){
 			$confirm = "return confirm('".sprintf($lang['qms_spylist_link_are_your_sure_modify'],$table_spy['joueur'][$j])."')";
 			$img = "<img src='".FOLDER_QMS."/images/modify.png' name='".sprintf($lang['qms_spylist_link_modify_spy'],$table_spy["id"][$j])."'>";
 			$out_modify = "<a href='$modify_link' onclick=\"$confirm\" $tooltip>$img</a>";
-		} 
+		}
 		else  // Pas d'icone pour modifier
 			$out_modify = "&nbsp;";
 		if($private||($user_data['user_id']==$table_spy['sender_id'][$j])/*||IsUserAdmin()*/)
@@ -248,10 +245,10 @@ if($max_spy>0){
 		<td class='d'>&nbsp;</td>
 		<td class='d' colspan='8'>
 			<img src='<?php echo FOLDER_QMS; ?>/images/arrow_ltr.png'>
-			<a href="Javascript:void(0)" onClick="GereChkbox('spy_list','1');"><?php echo $lang['qms_spylist_check_tout']; ?></a> / 
-			<a href="Javascript:void(0)" onClick="GereChkbox('spy_list','0');"><?php echo $lang['qms_spylist_check_aucun']; ?></a> / 
-			<a href="Javascript:void(0)" onClick="GereChkbox('spy_list','2');"><?php echo $lang['qms_spylist_check_inverser']; ?></a> / 
-			<a href="Javascript:void(0)" onClick="GereChkbox('spy_list','3');"><?php echo $lang['qms_spylist_check_modifies']; ?></a> / 
+			<a href="Javascript:void(0)" onClick="GereChkbox('spy_list','1');"><?php echo $lang['qms_spylist_check_tout']; ?></a> /
+			<a href="Javascript:void(0)" onClick="GereChkbox('spy_list','0');"><?php echo $lang['qms_spylist_check_aucun']; ?></a> /
+			<a href="Javascript:void(0)" onClick="GereChkbox('spy_list','2');"><?php echo $lang['qms_spylist_check_inverser']; ?></a> /
+			<a href="Javascript:void(0)" onClick="GereChkbox('spy_list','3');"><?php echo $lang['qms_spylist_check_modifies']; ?></a> /
 			<a href="Javascript:void(0)" onClick="GereChkbox('spy_list','4');"><?php echo $lang['qms_spylist_check_inconnus']; ?></a>&nbsp;
 			<img src='<?php echo FOLDER_QMS; ?>/images/ligne.png'>
 			<input type='hidden' value='<?php echo $start; ?>' name='start'>
@@ -274,7 +271,7 @@ if($max_spy>0){
 	<?php //Champ pour choisir le nombre d espionnage par pages  ?>
 	<!-- choix du nombre d'espionnage par pages -->
 <form action='<?php echo $string_url; ?>' method='post'>
-	<br/><?php echo $lang['qms_spylist_nbligne_par_pages']; ?> 
+	<br/><?php echo $lang['qms_spylist_nbligne_par_pages']; ?>
 <?php
 	$a = 'lignes_par_pages';
 	$b = get_qms_config("lignes",$user_data['user_id']);
@@ -286,13 +283,13 @@ if($max_spy>0){
 else{ // Pas d'espionnage à lister
 	if($filtre) echo "<div align='center'>".$lang['qms_spylist_no_spy_filtered_found']."</div>\n";
 	else echo "<div align='center'>".$lang['qms_spylist_no_spy_found']."</div>\n";
-	
+
 }
 // Fin du FieldSet ?>
 	<!-- fin page <?php echo $pub_page; ?>.php -->
 </fieldset>
 <?php
-function make_changepage_table($pub_pagenum,$max_page,$string_url){	// Tableau pour les boutons de changement de page 
+function make_changepage_table($pub_pagenum,$max_page,$string_url){	// Tableau pour les boutons de changement de page
 	global $lang;
 	if($max_page<2) return "";
 	$next_page_link = $prev_page_link = "";
@@ -304,11 +301,11 @@ function make_changepage_table($pub_pagenum,$max_page,$string_url){	// Tableau p
 	<!-- Bouton de changement de pages -->
 <table width="100%">
 	<tr>
-		<?php 
+		<?php
 	$style = ($prev_page_link=="")?" style='visibility:hidden;'":"";
 	echo "<td class='c'$style align='center'$prev_page_link><a><<<</a></td>";
 
-	// Liste du choix de page 
+	// Liste du choix de page
 ?>
 		<form action='<?php echo $string_url; ?>' method='post'>
 		<td class='d' align='center' colspan='2'>
@@ -325,13 +322,13 @@ function make_changepage_table($pub_pagenum,$max_page,$string_url){	// Tableau p
 			</select>
 		</td>
 </form>
-<?php 
+<?php
 	$style = ($next_page_link=="")?" style='visibility:hidden;'":"";
 	echo "<td class='c'$style align='center'$next_page_link><a>>>></a></td>";
 ?>
 	</tr>
 </table>
-<?php // Fin du tableau de changement de page 
+<?php // Fin du tableau de changement de page
 }
 ?>
 
