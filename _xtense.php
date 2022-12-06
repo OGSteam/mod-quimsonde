@@ -210,7 +210,11 @@ function get_real_sender_id($position)
     global $db;
     $query_limit = "SELECT  `user_id`  FROM `" . TABLE_USER_BUILDING . "` WHERE `coordinates` = '" . $position . "'";
     $result = $db->sql_query($query_limit);
-    list($user_id) = $db->sql_fetch_row($result);
+    if ($result = $db->sql_numrows($result) == 0) {
+        $user_id = 0;
+    } else {
+        list($user_id) = $db->sql_fetch_row($result);
+    }
     return $user_id;
 }
 // function get_coord($position){                       // Renvoi le rang de la planète par rapport à une position formatée GG:SS:RR
