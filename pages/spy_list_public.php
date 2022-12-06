@@ -1,6 +1,6 @@
 <?php
 /**
- * spy_list_public.php 
+ * spy_list_public.php
 
 Affiche la liste des espionnages, en version "public"
 
@@ -17,5 +17,3 @@ if (!defined('IN_SPYOGAME')) die("Hacking attempt");
 global $user_data;
 $pub_viewall = "1";
 require_once("spy_list.php");
-
-?>

@@ -1,6 +1,7 @@
 <?php
+
 /**
- * spy_list.php 
+ * spy_list.php
 
 Affiche la liste des espionnages
 
@@ -19,4 +20,3 @@ global $user_data;
 
 $pub_viewall = 1;
 include("own_details.php");
-?>
