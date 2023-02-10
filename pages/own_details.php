@@ -335,7 +335,7 @@ function get_spy_type_tooltip($table, $limite, $titre, $ttLeft = 0)
         else $value .= "_x_" . $table['count'][$i];
         if ($legend == "") $legend = $data_tmp;
         else
-			if (!$notab)
+            if (!$notab)
             $legend .= "_x_" . $data_tmp;
         else {
             $cnt++;

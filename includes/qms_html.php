@@ -121,7 +121,7 @@ function get_tooltip($gtarget, $gtype, $from_popup = 0, $id = 0, $member = 0)
     if ($type == "Joueur" || $type == "Alliance") {
         $individual_ranking = ($type == 'Joueur') ? galaxy_show_ranking_unique_player($target) : galaxy_show_ranking_unique_ally($target);
         while ($ranking = current($individual_ranking)) {
-            $datadate = strftime($lang['qms_classement_date'], key($individual_ranking));
+            $datadate = date($lang['qms_classement_date'], key($individual_ranking)) . "h";
             $general_rank = isset($ranking["general"]) ?  formate_number($ranking["general"]["rank"]) : "&nbsp;";
             $general_points = isset($ranking["general"]) ? formate_number($ranking["general"]["points"]) : "&nbsp;";
             $eco_rank = isset($ranking["eco"]) ?  formate_number($ranking["eco"]["rank"]) : "&nbsp;";
