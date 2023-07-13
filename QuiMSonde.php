@@ -2,11 +2,6 @@
 
 /**
  * QuiMSonde.php
-
-index du script
-analyse des $pub_
-appel des fichiers
-
  * @package QuiMSonde
  * @author Sylar
  * @link http://ogsteam.fr
