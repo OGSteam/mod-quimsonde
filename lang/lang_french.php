@@ -7,7 +7,7 @@ Liste des chaines et regex pour la langue Française.
 
  * @package QuiMSonde
  * @author Sylar
- * @link http://ogsteam.fr
+ * @link https://ogsteam.eu
  * @version : 1.5.1
  * dernière modification : 11.08.08
  */
@@ -594,4 +594,4 @@ $lang['qms_footer'] =
     "<div align=\"right\"><font size=\"2\">%1\$s v%2\$s by <a href='mailto:sylar.web@free.fr'>Sylar</a> <s>©</s> 2008</font><br/>\n" .
     "<font size=\"1\">Mod de Gestion des Espionnages subits<br />" .
     "<a href='index.php?action=%1\$s&page=changelog'>ChangeLog</a> / " .
-    "<a href='https://forum.ogsteam.fr/index.php?topic=817.0' target='_blank'>plus d'infos</a></font><br/></div>\n";
+    "<a href='https://forum.ogsteam.eu/index.php?topic=817.0' target='_blank'>plus d'infos</a></font><br/></div>\n";

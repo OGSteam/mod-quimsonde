@@ -4,7 +4,7 @@
  * popup.php
  * @package QuiMSonde
  * @author Sylar
- * @link http://ogsteam.fr
+ * @link https://ogsteam.eu
  * @version : 1.5.2
  * dernière modification : 10.11.2018
 

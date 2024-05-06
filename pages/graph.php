@@ -7,7 +7,7 @@ Permet l'affichage d'une courbe personnalisée.
 
  * @package QuiMSonde
  * @author Sylar
- * @link http://ogsteam.fr
+ * @link https://ogsteam.eu
  * @version : 1.5.1
  * dernière modification : 11.08.08
 

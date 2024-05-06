@@ -4,7 +4,7 @@
  * qms_statistique.php
  * @package QuiMSonde
  * @author Sylar
- * @link http://ogsteam.fr
+ * @link https://ogsteam.eu
  * @version : 1.5.1
  * dernière modification : 11.08.08
 
@@ -188,10 +188,10 @@ function get_time_analyse($tableau)
                     $best_time3 = $best_time2;
                     $best_time2 = $best_time1;
                     $best_time1 = array($diff, $now, $prev);
-                } else if ($best_time2[0] < $diff) {
+                } elseif ($best_time2[0] < $diff) {
                     $best_time3 = $best_time2;
                     $best_time2 = array($diff, $now, $prev);
-                } else if ($best_time3[0] < $diff) {
+                } elseif ($best_time3[0] < $diff) {
                     $best_time3 = array($diff, $now, $prev);
                 }
             }

@@ -4,7 +4,7 @@
  * qms_plugin.php
  * @package QuiMSonde
  * @author Sylar
- * @link http://www.ogsteam.fr
+ * @link https://www.ogsteam.eu
  * @version : 1.4b
  * dernière modification : 08.04.08
  * Largement inspiré du formidable mod QuiMObserve de Santory

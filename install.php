@@ -4,7 +4,7 @@
  * install.php
  * @package QuiMSonde
  * @author Sylar
- * @link http://www.ogsteam.fr
+ * @link https://www.ogsteam.eu
  * @version : 1.5
  * dernière modification : 27.04.08
  * Largement inspiré du formidable mod QuiMObserve de Santory
